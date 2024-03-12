@@ -308,4 +308,5 @@ Tipe data koleksi adalah jenis data yang digunakan untuk menyimpan kumpulan data
 secara individu melalui indeks atau kunci. Beberapa tipe data koleksi juga memiliki operasi khusus yang dapat digunakan untuk memanipulasi elemen dalam koleksi.
 
 ## Referensi
+Modul 1 Tipe Data, Praktikum Struktur Data dan Algoritme
 [1] I. Holm, Narrator, and J. Fullerton-Smith, Producer, How to Build a Human [DVD]. London: BBC; 2002.
