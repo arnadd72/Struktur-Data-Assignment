@@ -193,12 +193,66 @@ Program di atas adalah sebuah program C++ yang menampilkan data array, serta mem
 #### Full code Screenshot:
 ![Screenshot (341)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/da26b93e-c91c-4648-bf91-120133d4fe1f)
 
+## 2. [Buatlah program Input array tiga dimensi (seperti pada guided) tetapi jumlah atau ukuran elemennya diinputkan oleh user!]
 
+```C++
+#include <iostream> 
+ 
+using namespace std; 
+ 
+int main() { 
+  int x, y, z; 
+ 
+  cout << "Masukkan ukuran array (x y z): "; 
+  cin >> x >> y >> z; 
+ 
+  int arr[x][y][z]; 
+ 
+  for (int i = 0; i < x; i++) { 
+    for (int j = 0; j < y; j++) { 
+      for (int k = 0; k < z; k++) { 
+        cout << "Input array [" << i << "][" << j << "][" << k 
+<< "] = "; 
+        cin >> arr[i][j][k]; 
+      } 
+    } 
+    cout << endl; 
+  } 
+ 
+  cout << endl; 
+  for (int i = 0; i < x; i++) { 
+    for (int j = 0; j < y; j++) { 
+      for (int k = 0; k < z; k++) { 
+        cout << "Data array [" << i << "][" << j << "][" << k 
+<< "] = " << arr[i][j][k] << endl; 
+      } 
+    } 
+  } 
+ 
+  cout << endl; 
+  for (int i = 0; i < x; i++) { 
+    for (int j = 0; j < y; j++) { 
+for (int k = 0; k < z; k++) { 
+cout << arr[i][j][k] << " "; 
+} 
+cout << endl; 
+} 
+cout << endl;  
+} 
+return 0; 
+}
+```
 
+#### Output:
 
+![Screenshot (346)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/250d2252-aaea-4295-aa2a-2a76fdb28063)
+![Screenshot (347)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/9545f7dc-23f5-4891-89a2-3f3fe8d0dfc9)
 
+Program di atas merupakan program C++ yang meminta pengguna untuk memasukkan ukuran array tiga dimensi (x, y, z). Setelah itu, program akan membuat array tiga dimensi dengan ukuran yang dimasukkan oleh pengguna. Pengguna kemudian diminta untuk memasukkan nilai-nilai elemen array tersebut.
 
+#### Full code Screenshot:
 
+![Screenshot (348)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/674d7494-d398-45c6-9d34-20836c48bad4)
 
 ### 3. [Buatlah program menu untuk mencari nilai Maksimum, Minimum dan Nilai rata – rata dari suatu array dengan input yang dimasukan oleh user!]
 
@@ -298,7 +352,14 @@ Program di atas adalah sebuah program C++ yang menampilkan data array, serta mem
 
 
 ## Kesimpulan
-Ringkasan dan interpretasi pandangan kalia dari hasil praktikum dan pembelajaran yang didapat[1].
+Array merupakan struktur data dasar: Array adalah struktur data yang paling dasar dalam pemrograman. Dalam array, kita dapat menyimpan kumpulan data dengan tipe yang sama dan mengaksesnya menggunakan indeks.
+
+Jenis-jenis array:
+
+Array Satu Dimensi: Merupakan kumpulan data dengan tipe yang sama yang disusun dalam satu baris. Setiap elemen memiliki sebuah indeks yang dimulai dari 0.
+Array Dua Dimensi: Merupakan kumpulan array satu dimensi yang disusun dalam baris dan kolom. Setiap elemen memiliki dua indeks: indeks baris dan indeks kolom.
+Array Multidimensi: Merupakan array dengan dimensi lebih dari dua. Ini termasuk array tiga dimensi, array empat dimensi, dan seterusnya. Array ini memiliki lebih dari dua indeks dan digunakan untuk representasi data yang lebih kompleks.
+Dengan memahami konsep dan implementasi dari berbagai jenis array, kita dapat memproyeksikan struktur data yang lebih kompleks dan memahami cara mengakses dan memanipulasi data dalam program. Array adalah fondasi penting untuk mempelajari struktur data lainnya dalam pemrograman.
 
 ## Referensi
-[1] I. Holm, Narrator, and J. Fullerton-Smith, Producer, How to Build a Human [DVD]. London: BBC; 2002.
+MODUL 2 ARRAY
