@@ -3,26 +3,12 @@
 
 ## Dasar Teori
 ## a) Single Linked List
-Linked List merupakan koleksi linear dari data, yang disebut sebagai nodes, dimana setiap node akan menunjuk pada node lain melalui sebuah pointer. Linked List dapat didefinisikan pula sebagai kumpulan nodes yang merepresentasikan sebuah sequence. Sebuah linked list yang hanya memiliki 1 penghubung ke node lain disebut sebagai single linked list. Di dalam sebuah linked list, ada 1 pointer yang menjadi gambaran besar, yakni pointer HEAD yang menunjuk pada node pertama di dalam linked list itu sendiri. Sebuah linked list dikatakan kosong apabila isi pointer head adalah NULL. Beberapa operasi yang biasanya ada di dalam sebuah linked list adalah:
-
-1. Push
-
-Push merupakan sebuah operasi insert dimana di dalam linked list terdapat 2 kemungkinan insert, yaitu insert melalui depan (pushDepan) ataupun belakang (pushBelakang). Operasi pushDepan berarti data yang paling baru dimasukkan akan berada di depan data lainnya, dan sebaliknya pushBelakang berarti data yang paling baru akan berada di belakang data lainnya.
-Representasinya adalah sebagai berikut:
-
-pushDepan: 5, 3, 7, 9 maka hasilnya adalah: 9 ->7 ->3 -> 5 -> NULL
-pushBelakang: 5, 3, 7, 9 maka hasilnya adalah: 5 ->3 ->7 ->9 -> NULL
-
-2. Pop
-   
-Pop, kebalikan dari push, merupakan operasi delete, dimana di dalam linked list memiliki 2 kemungkinan delete, yaitu melalui depan (popDepan) dan melalui belakang (popBelakang). PopDepan berarti data yang akan dihapus adalah data paling depan, dan popBelakang berarti data yang akan dihapus adalah data paling belakang (akhir).
-
-Dalam penerapan code single linked list, umumnya hanya digunakan pointer head sebagai pointer yang menunjuk pada linked list.
+Single Linked List adalah sebuah field pointer-nya hanya satu buah saja dan satu arah serta pada akhir node yang nodenya saling terhubung satu sama lain. Jadi Setiap node pada linked list mempunyai field yang berisi pointer ke node berikutnya, dan juga memiliki field yang berisi data. Node terakhir akan menunjuk ke NULL yang akan digunakan sebagai kondisi berhenti pada saat pembacaan isi linked list[1].
 
 ## b) Double Linked List
 Pengertian Double Linked List adalah sekumpulan node data yang terurut linear atau sekuensial dengan dua buah pointer yaitu prev dan next.
 Double Linked List adalah linked list dengan node yang memiliki data dan dua buah reference link (biasanya disebut next dan prev) yang menunjuk ke node sebelum dan node sesudahnya. Pada implementasinya, terdapat dua variasi double linked list yaitu circular dan non-circular layaknya pada single linked list.
-Double linked list memiliki beberapa operasi dasar pada list, misalkan penyisipan, penghapusan, menampilkan maju, dan menampilkan mundur.
+Double linked list memiliki beberapa operasi dasar pada list, misalkan penyisipan, penghapusan, menampilkan maju, dan menampilkan mundur[2].
 
 ## Guided
 ## a.) Latihan Single Linked List
@@ -335,7 +321,8 @@ int main()
 ```
 ## Output Guided 1
 
-![Screenshot (173)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/cd141e3b-f057-4867-ae9c-027e259de1cf)
+![Screenshot (355)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/c82f21a5-149b-4350-9401-0d40422362fc)
+
 
 ## b.) Latihan Double Linked List
 Source code
@@ -473,7 +460,8 @@ int main() {
 ```
 
 ## Output Guided 2
-![Screenshot (174)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/4dfa6eac-bb83-4fa8-9d54-d480aa93722b)
+
+![Screenshot (352)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/4ad5fa93-e24e-46cd-ba80-1a5b9c55516b)
 
 
 ## Unguided 
@@ -508,388 +496,248 @@ f. Tampilkan seluruh data
 
 ## Source Code 
 ```C++
+//Nama : arnanda setya nosa putra
+// NIM : 2311102180
+
 #include <iostream>
+#include <string>
 using namespace std;
 
-/// PROGRAM SINGLE LINKED LIST NON-CIRCULAR
-// Deklarasi Struct Node
+// Struktur node untuk linked list
 struct Node
 {
-    // komponen/member
+    string nama;
     int usia;
-    string namaanda;
     Node *next;
 };
-Node *head;
-Node *tail;
-// Inisialisasi Node
-void init()
+
+Node *head = NULL;
+
+Node *cariNode(Node *head, string nama)
 {
-    head = NULL;
-    tail = NULL;
+    Node *current = head;
+    while (current != nullptr)
+    {
+        if (current->nama == nama)
+        {
+            return current;
+        }
+        current = current->next;
+    }
+    return nullptr;
 }
-// Pengecekan
-bool isEmpty()
+
+void insertAwal(string nama, int usia)
 {
+    Node *nodeBaru = new Node;
+    nodeBaru->nama = nama;
+    nodeBaru->usia = usia;
+    nodeBaru->next = head;
+    head = nodeBaru;
+}
+
+void insertSelanjutnya(string nama, int usia)
+{
+    Node *nodeBaru = new Node;
+    nodeBaru->nama = nama;
+    nodeBaru->usia = usia;
+    nodeBaru->next = NULL;
+
     if (head == NULL)
-        return true;
-    else
-        return false;
+    {
+        head = nodeBaru;
+        return;
+    }
+
+    Node *temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = nodeBaru;
 }
-// Tambah Depan
-void insertDepan(int usia, string namaanda)
+
+void insertTengah(string nama, int usia, string namaSebelum)
 {
-    // Buat Node baru
-    Node *baru = new Node;
-    baru->usia = usia;
-    baru->namaanda = namaanda;
-    baru->next = NULL;
-    if (isEmpty() == true)
+    Node *nodeBaru = new Node;
+    nodeBaru->nama = nama;
+    nodeBaru->usia = usia;
+
+    Node *temp = head;
+    while (temp->nama != namaSebelum)
     {
-        head = tail = baru;
-        tail->next = NULL;
-    }
-    else
-    {
-        baru->next = head;
-        head = baru;
-    }
-}
-// Tambah Belakang
-void insertBelakang(int usia, string namaanda)
-{
-    // Buat Node baru
-    Node *baru = new Node;
-    baru->usia = usia;
-     baru->namaanda = namaanda;
-    baru->next = NULL;
-    if (isEmpty() == true)
-    {
-        head = tail = baru;
-        tail->next = NULL;
-    }
-    else
-    {
-        tail->next = baru;
-        tail = baru;
-    }
-}
-// Hitung Jumlah List
-int hitungList()
-{
-    Node *hitung;
-    hitung = head;
-    int jumlah = 0;
-    while (hitung != NULL)
-    {
-        jumlah++;
-        hitung = hitung->next;
-    }
-    return jumlah;
-}
-// Tambah Tengah
-void insertTengah(int usia, int posisi, string namaanda)
-{
-    if (posisi < 1 || posisi > hitungList())
-    {
-        cout << "Posisi diluar jangkauan" << endl;
-    }
-    else if (posisi == 1)
-    {
-        cout << "Posisi bukan posisi tengah" << endl;
-    }
-    else
-    {
-        Node *baru, *bantu;
-        baru = new Node();
-        baru->usia = usia;
-        baru->namaanda = namaanda;
-        // tranversing
-        bantu = head;
-        int nomor = 1;
-        while (nomor < posisi - 1)
+        temp = temp->next;
+        if (temp == NULL)
         {
-            bantu = bantu->next;
-            nomor++;
-        }
-        baru->next = bantu->next;
-        bantu->next = baru;
-    }
-}
-// Hapus Depan
-void hapusDepan()
-{
-    Node *hapus;
-    if (isEmpty() == false)
-    {
-        if (head->next != NULL)
-        {
-            hapus = head;
-            head = head->next;
-            delete hapus;
-        }
-        else
-        {
-            head = tail = NULL;
+            cout << "Data dengan nama " << namaSebelum << " tidak ditemukan " << endl;
+            return;
         }
     }
-    else
-    {
-        cout << "List kosong!" << endl;
-    }
+    nodeBaru->next = temp->next;
+    temp->next = nodeBaru;
 }
-// Hapus Belakang
-void hapusBelakang()
+
+// Fungsi untuk mengupdate data berdasarkan nama
+void updateData(string nama, int usia, string newnama)
 {
-    Node *hapus;
-    Node *bantu;
-    if (isEmpty() == false)
+    Node *current = head;
+    while (current != nullptr && current->nama != nama)
     {
-        if (head != tail)
-        {
-            hapus = tail;
-            bantu = head;
-            while (bantu->next != tail)
-            {
-                bantu = bantu->next;
-            }
-            tail = bantu;
-            tail->next = NULL;
-            delete hapus;
-        }
-        else
-        {
-            head = tail = NULL;
-        }
+        current = current->next;
     }
-    else
+
+    if (current == nullptr)
     {
-        cout << "List kosong!" << endl;
+        cout << "Node dengan nama " << nama << " tidak ditemukan!" << endl;
+        return;
     }
+
+    // current->nama = nama;
+    current->usia = usia;
+    current->nama = newnama;
 }
-// Hapus Tengah
-void hapusTengah(int posisi)
+
+// Fungsi untuk menghapus node berdasarkan nama
+void deleteData(string nama)
 {
-    Node *hapus, *bantu, *bantu2;
-    if (posisi < 1 || posisi > hitungList())
+    if (head == nullptr)
     {
-        cout << "Posisi di luar jangkauan" << endl;
+        cout << "Linked list kosong." << endl;
+        return;
     }
-    else if (posisi == 1)
+    if (head->nama == nama)
     {
-        cout << "Posisi bukan posisi tengah" << endl;
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+        cout << "Data berhasil dihapus." << endl;
+        return;
     }
-    else
+    Node *temp = head;
+    while (temp->next != nullptr && temp->next->nama != nama)
     {
-        int nomor = 1;
-        bantu = head;
-        while (nomor <= posisi)
-        {
-            if (nomor == posisi - 1)
-            {
-                bantu2 = bantu;
-            }
-            if (nomor == posisi)
-            {
-                hapus = bantu;
-            }
-            bantu = bantu->next;
-            nomor++;
-        }
-        bantu2->next = bantu;
-        delete hapus;
+        temp = temp->next;
     }
-}
-// Ubah Depan
-void ubahDepan(int usia, string namaanda)
-{
-    if (isEmpty() == false)
+    if (temp->next != nullptr)
     {
-        head->usia = usia;
-        head->namaanda = namaanda;
+        Node *toDelete = temp->next;
+        temp->next = temp->next->next;
+        delete toDelete;
+        cout << "Data berhasil dihapus." << endl;
     }
     else
     {
-        cout << "List masih kosong!" << endl;
+        cout << "Data tidak ditemukan." << endl;
     }
 }
-// Ubah Tengah
-void ubahTengah(int usia, int posisi, string namaanda)
+
+// Fungsi untuk menampilkan seluruh data dalam linked list
+void display()
 {
-    Node *bantu;
-    if (isEmpty() == false)
+    Node *temp = head;
+    cout << "Data Mahasiswa:" << endl;
+    while (temp != nullptr)
     {
-        if (posisi < 1 || posisi > hitungList())
-        {
-            cout << "Posisi di luar jangkauan" << endl;
-        }
-        else if (posisi == 1)
-        {
-            cout << "Posisi bukan posisi tengah" << endl;
-        }
-        else
-        {
-            bantu = head;
-            int nomor = 1;
-            while (nomor < posisi)
-            {
-                bantu = bantu->next;
-                nomor++;
-            }
-            bantu->usia = usia;
-            bantu->namaanda = namaanda;
-        }
+        cout << "Nama: " << temp->nama << "\t"
+             << "Usia: " << temp->usia << endl;
+        temp = temp->next;
     }
-    else
-    {
-        cout << "List masih kosong!" << endl;
-    }
-}
-// Ubah Belakang
-void ubahBelakang(int usia,string namaanda)
-{
-    if (isEmpty() == false)
-    {
-        tail->usia = usia;
-        tail->namaanda = namaanda;
-    }
-    else
-    {
-        cout << "List masih kosong!" << endl;
-    }
-}
-// Hapus List
-void clearList()
-{
-    Node *bantu, *hapus;
-    bantu = head;
-    while (bantu != NULL)
-    {
-        hapus = bantu;
-        bantu = bantu->next;
-        delete hapus;
-    }
-    head = tail = NULL;
-    cout << "List berhasil terhapus!" << endl;
-}
-// Tampilkan List
-void tampil()
-{
-    Node *bantu;
-    bantu = head;
-    int nomor = 1;
-    if (isEmpty() == false)
-    {
-        while (bantu != NULL)
-        {
-            cout << nomor << ". " << bantu->namaanda << "   " << bantu->usia << endl;
-            bantu = bantu->next;
-            nomor++;
-        }
-        cout << endl;
-    }
-    else
-    {
-        cout << "List masih kosong!" << endl;
-    }
-}
+};
+
 int main()
 {
-    int pilihan, usia, posisi;
-    string nama;
-    init();
-    do{
-    system("cls");
-    cout << " DATA NAMA DAN USIA\n";
-    cout << " 1.  Tambah depan\n";
-    cout << " 2.  Tambah belakang\n";
-    cout << " 3.  Tambah Tengah\n";
-    cout << " 4.  Hapus Depan\n";
-    cout << " 5.  Hapus Belakang\n";
-    cout << " 6.  Hapus Tengah\n";
-    cout << " 7.  Ubah Depan\n";
-    cout << " 8.  Ubah Belakang\n";
-    cout << " 9.  Ubah Tengah\n";
-    cout << " 10. Remove All\n";
-    cout << " 11. Tampilkan Data\n";
-    cout << " Inputkan Nomor : ";
-    cin >> pilihan;
-    switch(pilihan)
+    int choice, pilihan;
+    string nama, namaSebelum, namaBaru, newnama;
+    int usia;
+
+    do
     {
-        case 1 : cout << " Nama : ";
-        cin>> nama;
-        cout << " Usia : ";
-        cin>>usia;
-        insertDepan(usia, nama);
-        break;
 
-        case 2 : cout << " Nama : ";
-        cin>> nama;
-        cout << " Usia : ";
-        cin>>usia;
-        insertBelakang(usia, nama);
-        break;
+        cout << "\nMenu:\n";
+        cout << "1. Tambah Data\n";
+        cout << "2. Update Data\n";
+        cout << "3. Hapus Data\n";
+        cout << "4. Tampilkan Data\n";
+        cout << "5. Keluar\n";
+        cout << "Pilih: ";
+        cin >> choice;
 
-        case 3 : cout << " Nama : ";
-        cin>> nama;
-        cout << " Usia : ";
-        cin>>usia;
-        cout << " Posisi : ";
-        cin >> posisi;
-        insertTengah(usia, posisi ,nama);
-        break;
+        switch (choice)
+        {
+        case 1:
+            do
+            {
+                cout << "1. Insert Data Awal" << endl;
+                cout << "2. Insert Data Selanjutnya" << endl;
+                cout << "3. Insert Data Tengah" << endl;
+                cout << "4. Kembali ke menu sebelumnya" << endl;
+                cout << "Masukkan Pilihan : ";
+                cin >> pilihan;
+                switch (pilihan)
+                {
+                case 1:
 
-        case 4 :
-        hapusDepan();
-        break;
+                    cout << "Masukkan nama: ";
+                    cin >> nama;
+                    cout << "Masukkan usia: ";
+                    cin >> usia;
+                    insertAwal(nama, usia);
+                    break;
 
-        case 5 :
-        hapusBelakang();
-        break;
+                case 2:
 
-        case 6 :
-        cout << " Posisi Hapus : ";
-        cin >> posisi;
-        hapusTengah(posisi);
-        break;
+                    cout << "Masukkan nama: ";
+                    cin >> nama;
+                    cout << "Masukkan usia: ";
+                    cin >> usia;
+                    insertSelanjutnya(nama, usia);
+                    break;
 
+                case 3:
 
-        case 7 : cout << " Nama : ";
-        cin>> nama;
-        cout << " Usia : ";
-        cin>>usia;
-        ubahDepan(usia, nama);
-        break;
+                    cout << "Masukkan nama: ";
+                    cin >> nama;
+                    cout << "Masukkan usia: ";
+                    cin >> usia;
+                    cout << "Masukkan nama sebelum data baru: ";
+                    cin >> namaSebelum;
+                    insertTengah(nama, usia, namaSebelum);
 
-        case 8 :  cout << " Nama : ";
-        cin>> nama;
-        cout << " Usia : ";
-        cin>>usia;
-        ubahBelakang(usia, nama);
-        break;
+                case 4:
+                    cout << "Kembali ke menu utama" << endl;
+                    break;
 
-        case 9 :  cout << " Nama : ";
-        cin>> nama;
-        cout << " Usia : ";
-        cin>>usia;
-        cout << "Posisi : ";
-        cin >> posisi;
-        ubahTengah(usia,posisi, nama);
-        break;
-
-        case 10 :
-        clearList();
-        break;
-
-        case 11 :
-        tampil();
-        system ("pause");
-        break;
-
-        default: cout << "Inputan yang anda masukan tidak valid !!";
-        break;
-    }
-    }while (true);
+                default:
+                    cout << "Pilihan tidak valid" << endl;
+                    break;
+                }
+            } while (pilihan != 4);
+            break;
+        case 2:
+            cout << "Masukkan nama yang akan diupdate: ";
+            cin >> nama;
+            cout << "Masukkan usia baru: ";
+            cin >> usia;
+            cout << "Masukkan nama baru: ";
+            cin >> newnama;
+            updateData(nama, usia, newnama);
+            break;
+        case 3:
+            cout << "Masukkan nama yang akan dihapus: ";
+            cin >> nama;
+            deleteData(nama);
+            break;
+        case 4:
+            display();
+            break;
+        case 5:
+            cout << "Terima kasih telah menggunakan program.\n";
+            return 0;
+        default:
+            cout << "Pilihan tidak valid.\n";
+            break;
+        }
+    } while (choice != 5);
     return 0;
 }
 ```
@@ -899,37 +747,35 @@ int main()
 a. Masukkan data sesuai urutan berikut. (Gunakan insert depan,
 belakang atau tengah). Data pertama yang dimasukkan adalah
 nama dan usia anda
+![Screenshot (357)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/e6bec4cc-b0c6-4880-a904-967609621947)
 
-![Screenshot (176)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/d88f290a-6f90-4976-80ca-6a5f443cb1d7)
 
 b. Hapus data Akechi
+![Screenshot (360)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/31d5a668-4906-4bf2-8db0-24ae7e159851)
 
-![Screenshot (177)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/6d3f40f4-3bfe-48ae-8b83-4ad7de86efae)
-
-![Screenshot (178)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/a47d4ed2-f902-49e5-b4eb-6bf912a66b32)
 
 c. Tambahkan data berikut diantara John dan Jane : Futaba 18
+![Screenshot (361)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/0a8eef26-25d0-44dc-b0b5-3778a26932e6)
+![Screenshot (362)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/dbddb07a-ab8b-4d5b-b764-a2d951c4ff71)
 
-![Screenshot (179)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/b34aba06-3644-42c9-b963-dd1105f7d94d)
 
-![Screenshot (180)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/1662d91b-f37d-46df-ae71-150295df91fd)
 
 d. Tambahkan data berikut diawal : Igor 20
 
-![Screenshot (181)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/422abf72-2fef-4e50-a6ca-aefaa1c6a624)
+![Screenshot (364)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/0cebe9db-8f1a-463f-9abb-e3142859fe88)
 
-![Screenshot (182)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/4f1c607e-967a-4f73-a37a-573376dc1208)
 
 e. Ubah data Michael menjadi : Reyn 18
+![Screenshot (365)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/e8abdb15-829d-4614-a4f3-a5b2f71280ac)
 
-![Screenshot (183)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/e847559e-afd5-4b8e-a925-bae40f869886)
 
 f. Tampilkan seluruh data
+![Screenshot (365)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/0ce470eb-08c9-4116-a539-8d477aef1dd2)
 
-![Screenshot (184)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/4872c0a7-8fac-498e-901e-2873f483a6df)
 
-Kode diatas adalah Penerapan Single Linked List untuk menginputkan data nama dan usia yang telah ditentukan. Kemudian ada 11 menu yang 
-akan bekerja sesuai perintah sesuai dengan yang di coding.
+
+Kode diatas adalah Penerapan Single Linked List untuk menginputkan data nama dan usia yang telah ditentukan. Kemudian ada 5 menu yang 
+akan bekerja sesuai perintah sesuai dengan yang diinputkan pengguna.
 
 ## 2. Soal mengenai Double Linked List
 Modifikasi Guided Double Linked List dilakukan dengan penambahan operasi untuk menambah data, menghapus, dan update di tengah / di
@@ -996,275 +842,315 @@ Cleora                     55.000
 ## Source Code
 ```C++
 #include <iostream>
+#include <string>
 using namespace std;
 
-class Node
+// Struktur node untuk linked list
+struct Node
 {
-public:
-    string harga;
-    string namaproduk;
+    string nama_produk;
+    int harga;
     Node *prev;
     Node *next;
 };
+
+// Kelas untuk Doubly Linked List
 class DoublyLinkedList
 {
+private:
+    Node *head; // Pointer ke node pertama
+    Node *tail; // Pointer ke node akhir
 public:
-    Node *head;
-    Node *tail;
+    // Konstruktor
     DoublyLinkedList()
     {
         head = nullptr;
         tail = nullptr;
     }
 
-    int hitungList()
+    void NewFunction(Node *newNode)
     {
-        Node *hitung;
-        hitung = head;
-        int jumlah = 0;
-        while (hitung != NULL)
-        {
-            jumlah++;
-            hitung = hitung->next;
-        }
-        return jumlah;
+        tail->next = newNode;
     }
 
-    void push(string harga, string namaproduk)
+    // Fungsi untuk menyisipkan node di akhir linked list
+    void insertAtEnd(string nama_produk, int harga)
     {
-        Node *newNode = new Node;
+        Node *newNode = new Node();
+        newNode->nama_produk = nama_produk;
         newNode->harga = harga;
-        newNode->namaproduk = namaproduk;
-        newNode->prev = nullptr;
-        newNode->next = head;
-        if (head != nullptr)
-        {
-            head->prev = newNode;
-        }
-        else
-        {
-            tail = newNode;
-        }
-        head = newNode;
-    }
-
-    void push_middle(string harga, string namaproduk, int posisi)
-    {
-        if (posisi < 1 || posisi > hitungList())
-        {
-            cout << "Posisi diluar jangkauan" << endl;
-        }
-        else if (posisi == 1)
-        {
-            cout << "Posisi bukan posisi tengah" << endl;
-        }
-        else
-        {
-            Node *baru, *bantu;
-            baru = new Node();
-            baru->namaproduk = namaproduk;
-            baru->harga = harga;
-            // tranversing
-            bantu = head;
-            int nomor = 1;
-            while (nomor < posisi - 1)
-            {
-                bantu = bantu->next;
-                nomor++;
-            }
-            baru->next = bantu->next;
-            bantu->next = baru;
-            baru->prev = bantu;
-            bantu->next->prev = baru;
-        }
-    }
-    void pop()
-    {
+        newNode->next = nullptr;
         if (head == nullptr)
         {
+            newNode->prev = nullptr;
+            head = newNode;
             return;
         }
         Node *temp = head;
-        head = head->next;
-        if (head != nullptr)
+        while (temp->next != nullptr)
         {
-            head->prev = nullptr;
+            temp = temp->next;
         }
-        else
+        temp->next = newNode;
+        newNode->prev = temp;
+    }
+
+    // Fungsi untuk menghapus node dengan nama produk tertentu
+    void deleteNode(string nama_produk)
+    {
+        if (head == nullptr)
         {
-            tail = nullptr;
+            cout << "Linked list kosong." << endl;
+            return;
         }
+        if (head->nama_produk == nama_produk)
+        {
+            Node *temp = head;
+            head = head->next;
+            if (head != nullptr)
+            {
+                head->prev = nullptr;
+            }
+            delete temp;
+            return;
+        }
+        Node *temp = head;
+        while (temp != nullptr && temp->nama_produk != nama_produk)
+        {
+            temp = temp->next;
+        }
+        if (temp == nullptr)
+        {
+            cout << "Node dengan nama produk " << nama_produk << " tidak ditemukan." << endl;
+            return;
+        }
+        if (temp->next != nullptr)
+        {
+            temp->next->prev = temp->prev;
+        }
+        temp->prev->next = temp->next;
         delete temp;
     }
-    
-    void pop_middle(int position)
-    {
-        Node *temp, *current, *prevCurrent;
 
-        if (position < 1 || position > hitungList())
+    // Fungsi untuk mengubah harga dari node dengan nama produk tertentu
+    void updateData(string nama_produk, int hargaBaru, string namaBaru)
+    {
+        Node *current = head;
+        while (current != NULL)
         {
-            cout << "Posisi di luar jangkauan" << endl;
+            if (current->nama_produk == nama_produk)
+            {
+                current->harga = hargaBaru;
+                current->nama_produk = namaBaru;
+                cout << "Data produk " << nama_produk << " berhasil diupdate!" << endl;
+                return;
+            }
+            current = current->next;
         }
-        else if (position == 1)
+        cout << "Data tidak ditemukan" << endl;
+    }
+
+    // Fungsi untuk menambahkan data pada urutan Node tertentu
+    void tambahDataUrutanTertentu(string nama_produk, int harga, int urutan)
+    {
+        Node *newNode = new Node();
+        newNode->nama_produk = nama_produk;
+        newNode->harga = harga;
+
+        Node *current = head;
+        int pos = 1;
+        while (current != NULL && pos < urutan)
         {
-            cout << "Posisi bukan di tengah" << endl;
+            current = current->next;
+            pos++;
+        }
+
+        if (current == NULL)
+        {
+            cout << "Urutan tidak valid" << endl;
+            return;
+        }
+
+        newNode->next = current->next;
+        newNode->prev = current;
+        if (current->next != NULL)
+            current->next->prev = newNode;
+        current->next = newNode;
+        cout << "Berhasil menambahkan data!" << endl;
+    }
+
+    // Fungsi untuk menghapus node berdasarkan urutan yang ditentukan
+    void hapusDataUrutanTertentu(int urutan)
+    {
+        if (head == nullptr)
+        {
+            cout << "Linked List Kosong." << endl;
+            return;
+        }
+
+        Node *current = head;
+        int pos = 0;
+        while (current != nullptr && pos < urutan)
+        {
+            current = current->next;
+            pos++;
+        }
+
+        if (current == nullptr || current == tail)
+        {
+            cout << "Urutan tidak valid" << endl;
+            return;
+        }
+
+        if (current == head)
+        {
+            head = current->next;
+            if (head != nullptr)
+                head->prev = nullptr;
+        }
+        else if (current == tail)
+        {
+            tail = current->prev;
+            tail->next = nullptr;
         }
         else
         {
-            int number = 1;
-            current = head;
-
-            while (number <= position)
-            {
-                if (number == position - 1)
-                {
-                    prevCurrent = current;
-                }
-
-                if (number == position)
-                {
-                    temp = current;
-                }
-
-                current = current->next;
-                number++;
-            }
-            prevCurrent->next = current;
-            current->prev = prevCurrent;
-            delete temp;
+            current->prev->next = current->next;
+            current->next->prev = current->prev;
         }
+        delete current;
+        cout << "Data pada urutan " << urutan << " berhasil dihapus!" << endl;
     }
-    bool update(string oldData, string namaproduk, string harga)
-    {
-        Node *current = head;
-        while (current != nullptr)
-        {
-            if (current->namaproduk == oldData)
-            {
-                current->namaproduk = namaproduk;
-                current->harga = harga;
-                return true;
-            }
-            current = current->next;
-        }
-        return false;
-    }
+
+    // Fungsi untuk menghapus semua node dalam linked list
     void deleteAll()
     {
-        Node *current = head;
-        while (current != nullptr)
+        Node *temp = head;
+        while (temp != nullptr)
         {
-            Node *temp = current;
-            current = current->next;
+            Node *nextNode = temp->next;
             delete temp;
+            temp = nextNode;
         }
         head = nullptr;
-        tail = nullptr;
     }
+
+    // Fungsi untuk menampilkan seluruh data dalam linked list
     void display()
     {
-        Node *current = head;
-        while (current != nullptr)
+        Node *temp = head;
+        cout << "\nNama Produk\tHarga" << endl;
+        while (temp != nullptr)
         {
-            cout << current->namaproduk << "   " << current->harga << endl;
-            current = current->next;
+            cout << temp->nama_produk << "   \t" << temp->harga << endl;
+            temp = temp->next;
         }
-        cout << endl;
     }
 };
 
 int main()
 {
-    DoublyLinkedList list;
-    int posisi;
-    string namaproduk, harga;
+    DoublyLinkedList produkList;
+    string nama_produk, namaBaru;
+    int harga, hargaBaru, urutan;
+
+    // Menambahkan data produk sesuai permintaan
+    produkList.insertAtEnd("Originote", 60000);
+    produkList.insertAtEnd("Somethinc", 150000);
+    produkList.insertAtEnd("Skintific", 100000);
+    produkList.insertAtEnd("Wardah", 50000);
+    produkList.insertAtEnd("Hanasui", 30000);
+
+    // Menampilkan menu
+    cout << "Toko Skincare Purwokerto" << endl;
+    cout << "1. Tambah Data" << endl;
+    cout << "2. Hapus Data" << endl;
+    cout << "3. Update Data" << endl;
+    cout << "4. Tambah Data Urutan Tertentu" << endl;
+    cout << "5. Hapus Data Urutan Tertentu" << endl;
+    cout << "6. Hapus Seluruh Data" << endl;
+    cout << "7. Tampilkan Data" << endl;
+    cout << "8. Exit" << endl;
+
+    int choice;
     while (true)
-    {   system("cls");
-        cout << "Toko Skincare Purwokerto\n";
-        cout << " 1. Tambah Data" << endl;
-        cout << " 2. Hapus Data" << endl;
-        cout << " 3. Update data" << endl;
-        cout << " 4. Tambah Data Urutan Tertentu" << endl;
-        cout << " 5. Hapus Data Urutan Tertentu" << endl;
-        cout << " 6. Hapus Seluruh Data" << endl;
-        cout << " 7. Tampilkan Data" << endl;
-        cout << " 8. Exit" << endl;
-        int choice;
-        cout << " Enter your choice: ";
+    {
+        cout << "\nMasukkan pilihan Anda: ";
         cin >> choice;
-        cout << endl;
         switch (choice)
         {
         case 1:
         {
-            cout << "Nama Produk : ";
-            cin >> namaproduk;
-            cout << "Harga Produk : ";
+            cout << "Masukkan nama produk: ";
+            cin >> nama_produk;
+            cout << "Masukkan harga: ";
             cin >> harga;
-            list.push(harga, namaproduk);
+            produkList.insertAtEnd(nama_produk, harga);
+            cout << "Berhasil menambahkan data!" << endl;
             break;
         }
         case 2:
         {
-            list.pop();
+            cout << "Masukkan nama produk yang akan dihapus: ";
+            cin >> nama_produk;
+            produkList.deleteNode(nama_produk);
+            cout << "Data dengan nama " << nama_produk << " berhasil dihapus!" << endl;
             break;
         }
         case 3:
         {
-            string oldData, newData;
-            cout << "Nama Produk Sebelumnya : ";
-            cin >> oldData;
-            cout << "Nama Produk Baru : ";
-            cin >> newData;
-            cout << "Harga : ";
-            cin >> harga;
-            bool updated = list.update(oldData, newData, harga);
-            if (!updated)
-            {
-                cout << "Data not found" << endl;
-            }
+            cout << "Masukkan nama produk yang akan diupdate: ";
+            cin >> nama_produk;
+            cout << "Masukkan harga baru: ";
+            cin >> hargaBaru;
+            cout << "Masukkan nama produk baru: ";
+            cin >> namaBaru;
+            produkList.updateData(nama_produk, hargaBaru, namaBaru);
             break;
         }
         case 4:
         {
-            cout << "Pilih Nomor Urut : ";
-            cin >> posisi;
-            cout << "Nama Produk : ";
-            cin >> namaproduk;
-            cout << "Harga : ";
+            cout << "Masukkan nama produk: ";
+            cin >> nama_produk;
+            cout << "Masukkan harga: ";
             cin >> harga;
-            list.push_middle(harga, namaproduk, posisi);
+            cout << "Masukkan urutan(dihitung dari 0): ";
+            cin >> urutan;
+            produkList.tambahDataUrutanTertentu(nama_produk, harga, urutan);
             break;
         }
         case 5:
         {
-            cout << "Pilih Nomor Yang Untuk Menghapus Data : ";
-            cin >> posisi;
-            list.pop_middle(posisi);
+            int urutan;
+            cout << "Masukkan urutan produk yang akan dihapus(dihitung dari 0): ";
+            cin >> urutan;
+            produkList.hapusDataUrutanTertentu(urutan);
             break;
         }
         case 6:
         {
-            list.deleteAll();
+            produkList.deleteAll();
+            cout << "Semua data telah dihapus!" << endl;
             break;
         }
         case 7:
         {
-            list.display();
-            system ("pause");
+            produkList.display();
             break;
         }
         case 8:
         {
-           return 0;
+            cout << "Terima kasih telah menggunakan program." << endl;
+            return 0;
         }
         default:
         {
-            cout << "Invalid choice" << endl;
+            cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
             break;
         }
         }
     }
+
     return 0;
 }
 ```
@@ -1273,43 +1159,45 @@ Case:
 
 1. Tambahkan produk Azarine dengan harga 65000 diantara
 Somethinc dan Skintific
-
-![Screenshot (187)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/df9f2278-02de-4852-a821-70de06eace17)
+![Screenshot (367)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/d967f6f0-b98d-4181-90c8-18ab21c0ac35)
 
 2. Hapus produk wardah
-
-![Screenshot (188)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/b6459ae8-f34d-4c74-b6f8-3cef10ed7a32)
+![Screenshot (370)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/68b3d3f1-6c07-4ce3-8081-e15f3589de35)
 
 3. Update produk Hanasui menjadi Cleora dengan harga 55.000
 
-![Screenshot (189)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/09129253-2539-43e6-9439-b9f431a31704)
+![Screenshot (371)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/8c9631ad-6f71-430b-ba0d-d0d3bacaf862)
 
 4. Tampilkan menu seperti dibawah ini
-
-![Screenshot (190)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/0f6c0f81-256d-4a97-b1a9-fff4538dd6f9)
-
+![Screenshot (372)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/0158d8e2-be3f-4166-a45d-576e16c3702f)
 
 Kode diatas merupakan penerapan dari double linked list untuk menginputkan nama dan harga produk. Kemudian terdapat 8 menu yang 
-bekerja sesuai perintah.
+bekerja sesuai perintah yang diinputkan pengguna.
 
 ## Kesimpulan
-Kelebihan Linked List
-- Ukuran Fleksibel: Linked List memiliki ukuran yang fleksibel karena kita dapat menambah atau menghapus simpul dengan mudah tanpa mempengaruhi simpul lainnya dalam urutan. Hal ini membuat Linked List lebih cocok digunakan ketika kita tidak tahu persis ukuran yang dibutuhkan atau jika ukurannya sering berubah.
+-Fungsi dan kegunaan linked list sebagai berikut:
+1.Linked list dapat digunakan untuk mengimplementasikan struktur data lain seperti stack, queue, graf, dll.
+2.Digunakan untuk melakukan operasi aritmatika pada bilangan long integer
+3.Dipakai untuk representasi matriks rongga.
+4.Digunakan dalam alokasi file yang ditautkan.
+5.Membantu dalam manajemen memori.
 
-- Penyisipan dan Penghapusan Elemen Efisien: Operasi penyisipan dan penghapusan elemen di Linked List relatif lebih efisien karena kita hanya perlu mengatur pointer simpul dan tidak perlu menggeser elemen-elemen lainnya.
+-kelebihan linked list:
+ 1.Struktur data dinamis: Linked list adalah himpunan dinamis sehingga dapat bertambah dan menyusut saat runtime dengan mengalokasikan dan membatalkan alokasi memori.
+ 2.Operasi penyisipan dan penghapusan: Operasi penyisipan dan penghapusan cukup mudah dalam linked list. Kita tidak perlu menggeser elemen setelah operasi penyisipan atau penghapusan elemen, hanya alamat yang ada di pointer berikutnya saja yang perlu diperbarui.
+ 3.Implementasi: Struktur data linier seperti stack dan queue seringkali mudah diimplementasikan menggunakan linked list.
 
-- Penggunaan Memori yang Efisien: Linked List hanya menggunakan ruang yang diperlukan untuk elemen yang sebenarnya digunakan. Jika kita hanya menggunakan sebagian dari Linked List, maka penggunaan memori akan lebih efisien dibandingkan dengan Array.
-
-Kekurangan Linked List
-- Tidak Mendukung Pengaksesan Langsung: Linked List tidak dapat diakses langsung seperti Array. Kita harus melalui simpul pertama dan mengikuti pointer secara berurutan untuk mencapai simpul yang diinginkan. Ini membuat Linked List lebih lambat dalam akses elemen secara acak.
-
-- Penyimpanan Memori Tambahan: Setiap simpul dalam Linked List mengandung pointer ke simpul berikutnya. Hal ini mengakibatkan penggunaan memori yang sedikit lebih besar daripada Array yang hanya menggunakan ruang yang diperlukan untuk elemen yang sebenarnya.
-
+-kekurangan linked list:
+1.Traversal: Dalam traversal, linked list lebih banyak memakan waktu dibandingkan dengan array. Akses langsung ke elemen tidak bisa dilakukan pada linked list seperti array yang dapat akses elemen berdasarkan indeks.
+2.Penggunaan memori: Linked list memerlukan lebih banyak memori dibandingkan dengan array. 
+3.Akses Acak: Akses acak tidak bisa dilakukan dalam linked list karena alokasi memorinya yang dinamis.
 ## Referensi
-[1] Binus University, Pengertian Single Linked List. https://socs.binus.ac.id/2017/03/15/single-linked-list/.
-    rizkidoank. Pengertian Double Linked List. rizkidoank.com. https://www.rizkidoank.com/2016/10/17/double-linked-list/.
-    
-[2] Perbedaan Array dan Linked List, perbedaan.co.id, https://www.perbedaan.co.id/perbedaan-array-dan-linked-list/. 2023.
+[1] Mengenal Single Linked List dalam Struktur Data. https://daismabali.com/artikel_detail/54/1/Mengenal-Single-Linked-List-dalam-Struktur-Data.html
+
+[2]rizkidoank. Pengertian Double Linked List. rizkidoank.com. https://www.rizkidoank.com/2016/10/17/double-linked-list/.
+
+[3]Struktur Data Linked List: Pengertian, Karakteristik, dan Jenis-jenisnya. https://www.trivusi.web.id/2022/07/struktur-data-linked-list.html    
+
 
 
 
