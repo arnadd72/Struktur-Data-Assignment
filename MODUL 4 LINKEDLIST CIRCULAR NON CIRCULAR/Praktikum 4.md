@@ -346,7 +346,7 @@ int main ()
 
 Kode program di atas merupakan implementasi dari single linked list non-circular dalam bahasa C++. Struktur data linked list non-circular terdiri dari sejumlah simpul (nodes), dimana setiap simpul memiliki dua bagian utama: data dan pointer yang menunjuk ke simpul berikutnya dalam urutan. Program ini mendefinisikan sebuah struct Node yang memiliki dua anggota yaitu data dan next yang merupakan pointer ke simpul berikutnya.
 
-## Linked List Circulsr
+## Linked List Circular
 Source code
 
 ```C++
