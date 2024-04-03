@@ -344,6 +344,8 @@ int main ()
 ## Output Guided 1
 ![Screenshot (377)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/de9709c0-1723-499f-bc4b-bd3a440e958c)
 
+Kode program di atas merupakan implementasi dari single linked list non-circular dalam bahasa C++. Struktur data linked list non-circular terdiri dari sejumlah simpul (nodes), dimana setiap simpul memiliki dua bagian utama: data dan pointer yang menunjuk ke simpul berikutnya dalam urutan. Program ini mendefinisikan sebuah struct Node yang memiliki dua anggota yaitu data dan next yang merupakan pointer ke simpul berikutnya.
+
 ## Linked List Circulsr
 Source code
 
