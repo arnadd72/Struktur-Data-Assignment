@@ -1172,12 +1172,8 @@ Ubah Tengah
 Kode di atas adalah implementasi dari program circular linked list dalam bahasa C++. Program ini memiliki struktur data linked list yang terdiri dari simpul-simpul (nodes) yang memiliki dua string yaitu "nama mahasiswa" dan "NIM mahasiswa". Program ini memiliki menu utama untuk memilih operasi-operasi yang ingin dilakukan pada linked list, seperti menambah, mengubah, menghapus, atau menampilkan data.
 
 ## Kesimpulan
-1. Linked List Non-Circular: Digunakan ketika data terkait harus disimpan dalam urutan tertentu dan tidak ada kebutuhan
-   untuk loop atau akses berulang ke elemen.
-   
-2. Linked List Circular: Digunakan dalam situasi di mana perlu untuk terus mengulang elemen linked list, misalnya dalam
-   implementasi buffer cincin atau algoritma tertentu seperti algoritma Floyd Cycle Detection.
-   
+Dalam pemilihan antara linked list circular dan non-circular tergantung pada kebutuhan spesifik aplikasi. Linked list circular cocok untuk situasi di mana perlu dilakukan iterasi siklus atau ketika aplikasi memerlukan akses cepat ke simpul awal setelah mencapai simpul terakhir. Sementara itu, linked list non-circular lebih umum digunakan dan lebih sederhana dalam implementasinya untuk kebutuhan yang tidak memerlukan sifat siklik dari linked list. 
+
 ## Referensi
 [1] M. Bahrul Ulum, S.kom, M.Kom. 2019. Modul Kuliah Struktur Data Linked List. available: https://lms-paralel.esaunggul.ac.id/pluginfile.php?file=%2F86227%2Fmod_resource%2Fcontent%2F1%2FModul%20Struktur%20Data-Linked%20List.pdf 
 
