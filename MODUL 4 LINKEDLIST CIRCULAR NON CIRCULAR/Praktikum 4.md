@@ -634,6 +634,8 @@ int main ()
 ## Output Guided 2
 ![Screenshot (378)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/e8b29a7a-12cc-48be-bdac-7d121e906923)
 
+Program di atas merupakan implementasi dari single linked list circular dalam bahasa C++. Single linked list circular adalah struktur data berurutan yang terdiri dari simpul-simpul yang saling terhubung dengan pointer, dan simpul terakhir menunjuk kembali ke simpul pertama, membentuk lingkaran. Pada program tersebut, terdapat struktur data Node yang memiliki dua anggota yaitu data dan next, yang menunjuk ke simpul berikutnya. Fungsi init() digunakan untuk menginisialisasi linked list
+
 # Unguided 
    [Soal]
    Buatlah program menu Linked List Non Circular untuk menyimpan Nama dan NIM
