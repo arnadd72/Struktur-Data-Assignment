@@ -5,9 +5,7 @@
 
 # Dasar Teori
 ## Linked List Circular
-Circular Linked List merupakan suatu linked list dimana tail (node terakhir) menunjuk ke head (node pertama). Jadi tidak ada pointer yang menunjuk NULL. Ada 2 jenis Circular Linked List, yaitu:
-1. Circular Single Linked List
-2. Circular Double Linked List
+Circular Linked List merupakan suatu linked list dimana tail (node terakhir) menunjuk ke head (node pertama). Jadi tidak ada pointer yang menunjuk NULL. Ada 2 jenis Circular Linked List, yaitu: Circular Single Linked dan List Circular Double Linked List[1]
 
 ## Linked List Non Circular
 Linked List Non Circular adalah Struktur Data linier, yang terdiri dari sekelompok node yang disimpan di alamat acak. Dalam Linked List Non Circular, elemen-elemen ditautkan menggunakan pointer. Selain itu Linked List Non Circular juga merupakan linked list yang bersifat searah, yaitu dapat dilalui hanya dalam satu arah dimulai dari kepala linked list sampai ke simpul akhir (tail).
