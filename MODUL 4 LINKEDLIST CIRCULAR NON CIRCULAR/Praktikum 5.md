@@ -1,5 +1,7 @@
 <h1 align="center">Laporan Praktikum Modul Circular And Non Circular </h1>
-<p align="center">Arvel Mahsa Athallah Firdaus-2311102188-IF-11-E</p>
+<p align="center">Arnanda setya nosa putra</p>
+<p align="center">231102180</p>
+<p align="center">IF 11 E</p>
 
 # Dasar Teori
 ## Linked List Circular
