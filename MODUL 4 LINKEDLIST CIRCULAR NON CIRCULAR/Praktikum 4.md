@@ -5,10 +5,10 @@
 
 # Dasar Teori
 ## Linked List Circular
-Circular Linked List merupakan suatu linked list dimana tail (node terakhir) menunjuk ke head (node pertama). Jadi tidak ada pointer yang menunjuk NULL. Ada 2 jenis Circular Linked List, yaitu: Circular Single Linked dan List Circular Double Linked List[1]
+Circular Linked List merupakan suatu linked list dimana tail (node terakhir) menunjuk ke head (node pertama). Jadi tidak ada pointer yang menunjuk NULL. Ada 2 jenis Circular Linked List, yaitu: Circular Single Linked dan List Circular Double Linked List.[1]
 
 ## Linked List Non Circular
-Linked List Non Circular adalah Struktur Data linier, yang terdiri dari sekelompok node yang disimpan di alamat acak. Dalam Linked List Non Circular, elemen-elemen ditautkan menggunakan pointer. Selain itu Linked List Non Circular juga merupakan linked list yang bersifat searah, yaitu dapat dilalui hanya dalam satu arah dimulai dari kepala linked list sampai ke simpul akhir (tail).
+Linked list non circular adalah struktur data di mana simpul terakhir tidak menunjuk kembali ke simpul pertama, sehingga tidak membentuk lingkaran atau sirkular. Ini berarti bahwa simpul terakhir memiliki nilai pointer NULL, menandakan akhir dari linked list.[2]
 
 # Guided
 ## Linked List Non Circular
@@ -342,8 +342,7 @@ int main ()
 }
 ```
 ## Output Guided 1
-
-![Screenshot (195)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/28af9c3f-f997-4110-894c-77348da0a839)
+![Screenshot (377)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/de9709c0-1723-499f-bc4b-bd3a440e958c)
 
 ## Linked List Circulsr
 Source code
@@ -631,8 +630,7 @@ int main ()
 ```
 
 ## Output Guided 2
-
-![Screenshot (196)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/8fc7155e-eb67-4d02-87ba-942b93436b9a)
+![Screenshot (378)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/e8b29a7a-12cc-48be-bdac-7d121e906923)
 
 # Unguided 
    [Soal]
@@ -1177,9 +1175,9 @@ data nama dan NIM mahasiswa. Selain itu terdapat beberapa menu yang tersedia den
    implementasi buffer cincin atau algoritma tertentu seperti algoritma Floyd Cycle Detection.
    
 ## Referensi
-[1] simplilearn, "Types of Linked List in Data Structures", 2023, https://www.simplilearn.com/tutorials/data-structure-tutorial/types-of-linked-list, [2 April 2024]
+[1] M. Bahrul Ulum, S.kom, M.Kom. 2019. Modul Kuliah Struktur Data Linked List. available: https://lms-paralel.esaunggul.ac.id/pluginfile.php?file=%2F86227%2Fmod_resource%2Fcontent%2F1%2FModul%20Struktur%20Data-Linked%20List.pdf 
 
-[2] PrepBytes Blog, "Know Everything about Linked List in Data Structure", https://www.prepbytes.com/blog/linked-list/a-brief-introduction-to-linked-lists/, [2 April 2024]
+[2] S. Aggarwal, M. Gupta, "Performance Comparison of Circular and Non-Circular Linked Lists," 2020 5th International Conference on Intelligent Computing and Control Systems (ICICCS), Madurai, India, 2020.
 
 
 
