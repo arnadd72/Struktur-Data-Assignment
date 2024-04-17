@@ -360,17 +360,21 @@ int main() {
 ## [Output Program 1]
 
 a. tambah data
+
 ![Screenshot (430)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/db69d83d-6cd3-4b9b-a0ac-93315842f7c1)
 ![Screenshot (431)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/70e622fc-2d06-4a2e-98b8-33e62ca26494)
 ![Screenshot (432)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/079b616b-5474-4196-a7d7-0f458a6bae72)
 
 b.Hapus data  
+
 ![Screenshot (433)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/1a40356b-8951-4cf6-9d96-d762c1e4923d)
 
-c.  Mencari data berdasarkan nim
+c.  Mencari data berdasarkan nim 
+
 ![Screenshot (434)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/c6c7a007-fd9d-4250-908b-821fce263244)
 
 d. Mencari data berdasarkan nilai 
+
 ![Screenshot (435)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/96520867-a5c5-441f-8dc6-b6b26d0579bc)
 
 Program tersebut adalah implementasi sederhana dari sebuah hash table untuk menyimpan data mahasiswa berdasarkan NIM dan nilai.Pengguna diberikan pilihan menu untuk melakukan operasi-operasi berikut:
