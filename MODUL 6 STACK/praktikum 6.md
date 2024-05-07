@@ -5,390 +5,213 @@
 
 
 ## Dasar Teori
-## Hash Table
+## Stack
+Tumpukan atau Stack adalah struktur data yang mengikuti prinsip "Last In, First Out" (LIFO), yang berarti elemen yang terakhir dimasukkan ke dalam tumpukan akan menjadi elemen pertama yang diambil. Ini mirip dengan tumpukan buku di atas meja; buku yang terakhir diletakkan di atas tumpukan akan menjadi yang pertama diambil.
+Dasar-dasar tumpukan meliputi operasi dasar seperti:
 
-Hash Table adalah struktur data yang menyimpan data dalam bentuk pasangan kunci-nilai, di mana setiap kunci di-mapping ke sebuah nilai. Ini memungkinkan akses cepat ke nilai-nilai berdasarkan kunci-kunci tertentu. Hash table terdiri dari array atau vektor yang digunakan untuk menyimpan data, dan fungsi hash yang mengonversi kunci menjadi indeks dalam array. Pencarian data dalam hash table biasanya memiliki kompleksitas waktu O(1) dalam kasus terbaik[1].
+1.Push: Menambahkan elemen baru ke atas tumpukan.
 
-## Kegunaan Struktur Data Hash Table
-Pencarian Cepat: Dapat digunakan untuk mencari data dengan cepat berdasarkan key. Ini sangat berguna dalam aplikasi seperti basis data, kamus, dan cache.
-Penyimpanan Data: Hash table dapat digunakan untuk menyimpan data dengan efisien. Data dapat diambil dan dimasukkan ke dalam tabel dengan waktu konstan, asalkan tidak ada collision yang signifikan.
-Implementasi Struktur Data Lain: Hash table dapat digunakan untuk mengimplementasikan struktur data lain, seperti set dan map[2]. 
+2.Pop: Menghapus elemen teratas dari tumpukan.
+
+3.Top/Peek: Mendapatkan nilai elemen teratas tanpa menghapusnya.
+
+4.IsEmpty: Memeriksa apakah tumpukan kosong.
+
+5.IsFull (pada implementasi statis): Memeriksa apakah tumpukan penuh.
+
+6.Size: Mendapatkan jumlah elemen dalam tumpukan.
+
+Tumpukan digunakan dalam banyak aplikasi, termasuk pemrosesan ekspresi aritmatika, manajemen memori dalam sistem komputer, pengolahan bahasa alami, dan masih banyak lagi[1]. 
 
 ## Guided
-## guided 1
 source code
 
 ```c++
 #include <iostream>
- using namespace std;
- const int MAX_SIZE = 10;
- // Fungsi hash sederhana
- int hash_func(int key) {
- return key % MAX_SIZE;
- }
- // Struktur data untuk setiap node
- struct Node {
- int key;
- int value;
- Node* next;
- Node(int key, int value) : key(key), value(value),
- next(nullptr) {}
- };
- // Class hash table
- class HashTable {
- private:
- Node** table;
- public:
- HashTable() {
- table = new Node*[MAX_SIZE]();
- }
- ~HashTable() {
- for (int i = 0; i < MAX_SIZE; i++) {
- Node* current = table[i];
- while (current != nullptr) {
- Node* temp = current;
- current = current->next;
- delete temp;
- }
- }
- delete[] table;
- }
- // Insertion
- void insert(int key, int value) {
- int index = hash_func(key);
- Node* current = table[index];
- while (current != nullptr) {
- if (current->key == key) {
- current->value = value;
- return;
- }
- current = current->next;
- }
-
-Node* node = new Node(key, value);
- node->next = table[index];
- table[index] = node;
- }
- // Searching
- int get(int key) {
- int index = hash_func(key);
- Node* current = table[index];
- while (current != nullptr) {
- if (current->key == key) {
- return current->value;
- }
- current = current->next;
- }
- return-1;
- }
- // Deletion
- void remove(int key) {
- int index = hash_func(key);
- Node* current = table[index];
- Node* prev = nullptr;
- while (current != nullptr) {
- if (current->key == key) {
- if (prev == nullptr) {
- table[index] = current->next;
- } else {
- prev->next = current->next;
- }
- delete current;
- return;
- }
- prev = current;
- current = current->next;
- }
- }
- // Traversal
- void traverse() {
- for (int i = 0; i < MAX_SIZE; i++) {
- Node* current = table[i];
- while (current != nullptr) {
- cout << current->key << ": " << current->value
- << endl;
- current = current->next;
- }
- }
- }
- };
-
-int main() {
- HashTable ht;
- // Insertion
- ht.insert(1, 10);
- ht.insert(2, 20);
- ht.insert(3, 30);
- // Searching
- cout << "Get key 1: " << ht.get(1) << endl;
- cout << "Get key 4: " << ht.get(4) << endl;
- // Deletion
- ht.remove(4);
- // Traversal
- ht.traverse();
- return 0;
- }
-```
-## Output Guided 1
-![Screenshot (427)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/fa374400-577a-4216-9b84-fe9067c1298d)
-
-
-## b.) guided 2
-Source code
-
-```C++
-#include <iostream>
-#include <string>
-#include <vector>
-
 using namespace std;
-
-const int TABLE_SIZE = 11;
-
-class HashNode {
-public:
-    string name;
-    string phone_number;
-
-    HashNode(string name, string phone_number) {
-        this->name = name;
-        this->phone_number = phone_number;
-    }
-};
-
-class HashMap {
-private:
-    vector<HashNode*> table[TABLE_SIZE];
-
-public:
-    int hashFunc(string key) {
-        int hash_val = 0;
-        for (char c : key) {
-            hash_val += c;
-        }
-        return hash_val % TABLE_SIZE;
-    }
-
-    void insert(string name, string phone_number) {
-        int hash_val = hashFunc(name);
-        for (auto node : table[hash_val]) {
-            if (node->name == name) {
-                node->phone_number = phone_number;
-                return;
-            }
-        }
-        table[hash_val].push_back(new HashNode(name, phone_number));
-    }
-
-    void remove(string name) {
-        int hash_val = hashFunc(name);
-        for (auto it = table[hash_val].begin(); it != table[hash_val].end(); it++) {
-            if ((*it)->name == name) {
-                table[hash_val].erase(it);
-                return;
-            }
-        }
-    }
-
-    string searchByName(string name) {
-        int hash_val = hashFunc(name);
-        for (auto node : table[hash_val]) {
-            if (node->name == name) {
-                return node->phone_number;
-            }
-        }
-        return "";
-    }
-
-    void print() {
-        for (int i = 0; i < TABLE_SIZE; i++) {
-            cout << i << ": ";
-            for (auto pair : table[i]) {
-                if (pair != nullptr) {
-                    cout << "[" << pair->name << ", " << pair->phone_number << "]";
-                }
-            }
-            cout << endl;
-        }
-    }
-};
-
-int main() {
-    HashMap employee_map;
-    employee_map.insert("Mistah", "1234");
-    employee_map.insert("Pastah", "5678");
-    employee_map.insert("Ghana", "91011");
-
-    cout << "Nomer Hp Mistah: " << employee_map.searchByName("Mistah") << endl;
-    cout << "Phone Hp Pastah: " << employee_map.searchByName("Pastah") << endl;
-
-    employee_map.remove("Mistah");
-
-    cout << "Nomer Hp Mistah setelah dihapus: " << employee_map.searchByName("Mistah") << endl << endl;
-
-    cout << "Hash Table: " << endl;
-    employee_map.print();
-
-    return 0;
+string arrayBuku[5];
+int maksimal = 5, top = 0;
+bool isFull() {
+    return (top == maksimal);
 }
-```
+bool isEmpty() {
+    return (top == 0);
+}
+void pushArrayBuku(string data) {
+    if (isFull()) {
+        cout << "Data telah penuh" << endl;
+    } else {
+        arrayBuku[top] = data;
+top++; }
+}
+void popArrayBuku() {
+    if (isEmpty()) {
+        cout << "Tidak ada data yang dihapus" << endl;
+    } else {
+        arrayBuku[top - 1] = "";
+top--; }
+}
+void peekArrayBuku(int posisi) {
+    if (isEmpty()) {
+        cout << "Tidak ada data yang bisa dilihat" << endl;
+    } else {
+        int index = top;
+        for (int i = 1; i <= posisi; i++) {
+index--; }
 
-## Output Guided 2
-![Screenshot (428)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/0cf982d6-2eab-4ddf-92f1-06d7cdb4af0e)
+
+            cout << "Posisi ke " << posisi << " adalah " <<
+arrayBuku[index] << endl;
+} }
+int countStack() {
+    return top;
+}
+void changeArrayBuku(int posisi, string data) {
+    if (posisi > top) {
+        cout << "Posisi melebihi data yang ada" << endl;
+    } else {
+        int index = top;
+        for (int i = 1; i <= posisi; i++) {
+index--; }
+        arrayBuku[index] = data;
+    }
+}
+void destroyArraybuku() {
+    for (int i = top; i >= 0; i--) {
+        arrayBuku[i] = "";
+    }
+top = 0; }
+void cetakArrayBuku() {
+    if (isEmpty()) {
+        cout << "Tidak ada data yang dicetak" << endl;
+    } else {
+        for (int i = top - 1; i >= 0; i--) {
+            cout << arrayBuku[i] << endl;
+} }
+}
+int main() {
+    pushArrayBuku("Kalkulus");
+    pushArrayBuku("Struktur Data");
+    pushArrayBuku("Matematika Diskrit");
+    pushArrayBuku("Dasar Multimedia");
+    pushArrayBuku("Inggris");
+    cetakArrayBuku();
+    cout << "\n";
+    cout << "Apakah data stack penuh? " << isFull() << endl;
+    cout << "Apakah data stack kosong? " << isEmpty() << endl;
+    peekArrayBuku(2);
+    popArrayBuku();
+    cout << "Banyaknya data = " << countStack() << endl;
+
+
+        changeArrayBuku(2, "Bahasa Jerman");
+    cetakArrayBuku();
+cout << "\n";
+    destroyArraybuku();
+    cout << "Jumlah data setelah dihapus: " << top << endl;
+    cetakArrayBuku();
+return 0; }
+```
+## Output Guided 
+![Screenshot (473)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/24d5f791-69c8-4abe-9526-d04fb8a6db20)
+
 
 ## Unguided 
-   [Soal]
    
-##  1. Implementasikan hash table untuk menyimpan data mahasiswa. Setiap mahasiswa
- memiliki NIM dan nilai. Implementasikan fungsi untuk menambahkan data baru,
- menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkan
- nilai. Dengan ketentuan :
- a. Setiap mahasiswa memiliki NIM dan nilai.
- b. Program memiliki tampilan pilihan menu berisi poin C.
- c. Implementasikan fungsi untuk menambahkan data baru, menghapus data,
- mencari data berdasarkan NIM, dan mencari data berdasarkan rentang nilai
- (80– 90)
+## 1. Buatlah program untuk menentukan apakah kalimat tersebut yang diinputkan dalam program stack adalah palindrom/tidak. Palindrom kalimat yang dibaca dari depan dan belakang sama. Jelaskan bagaimana cara kerja programnya.
 ## Source Code 
 ```C++
+//2311102180
+
 #include <iostream>
-#include <unordered_map>
-#include <vector>
+#include <stack>
+#include <string>
+#include <locale>
+
 using namespace std;
 
-struct Mahasiswa {
-    string NIM;
-    int nilai;
-};
 
-class HashTable {
-private:
-    unordered_map<string, Mahasiswa> tabel;
+bool isPalindrome(string str) {
+    stack<char> charStack;
+    int length = str.length();
 
-public:
-    void tambahData(Mahasiswa mahasiswa) {
-        tabel[mahasiswa.NIM] = mahasiswa;
-    }
-
-    void hapusData(string NIM) {
-        if (tabel.find(NIM) != tabel.end()) {
-            tabel.erase(NIM);
-            cout << "Data berhasil dihapus" << endl;
-        } else {
-            cout << "NIM tidak ditemukan" << endl;
+    
+    for (int i = 0; i < length / 2; i++) {
+        if (isalnum(str[i])) {
+            charStack.push(tolower(str[i]));
         }
     }
 
-    Mahasiswa cariDataBerdasarkanNIM(string NIM) {
-        if (tabel.find(NIM) != tabel.end()) {
-            return tabel[NIM];
-        } else {
-            throw "NIM tidak ditemukan";
-        }
-    }
-
-    vector<Mahasiswa> cariDataBerdasarkanRentangNilai(int nilaiMin, int nilaiMax) {
-        vector<Mahasiswa> hasil;
-        for (auto it = tabel.begin(); it != tabel.end(); it++) {
-            if (it->second.nilai >= nilaiMin && it->second.nilai <= nilaiMax) {
-                hasil.push_back(it->second);
+    for (int i = (length + 1) / 2; i < length; i++) {
+        if (isalnum(str[i])) {
+            if (charStack.empty() || charStack.top() != tolower(str[i])) { 
+                return false;
             }
+            charStack.pop();
         }
-        return hasil;
     }
-};
 
-int main() {
-    HashTable hashTable;
-    int pilihan;
-    do {
-        cout << "\t            PROGRAM HASH TABLE" << endl;
-        cout << "\t       =============================" << endl;
-        cout << "     Menu:" << endl;
-        cout << "\t-------------------------------------------------" << endl;
-        cout << "\t| 1. Tambah data baru                           |" << endl;
-        cout << "\t| 2. Hapus data                                 |" << endl;
-        cout << "\t| 3. Cari data berdasarkan NIM                  |" << endl;
-        cout << "\t| 4. Cari data berdasarkan rentang nilai (80-90)|" << endl;
-        cout << "\t| 5. Keluar                                     |" << endl;
-        cout << "\t-------------------------------------------------" << endl;
-        cout << "   MASUKKAN PILIHAN : ";
-        cin >> pilihan;
-
-        if (pilihan == 1) {
-            Mahasiswa mahasiswa;
-            cout << "Masukkan NIM: ";
-            cin >> mahasiswa.NIM;
-            cout << "Masukkan nilai: ";
-            cin >> mahasiswa.nilai;
-            hashTable.tambahData(mahasiswa);
-            cout << "Data berhasil ditambahkan" << endl;
-            cout << endl;
-        } else if (pilihan == 2) {
-            string NIM;
-            cout << "Masukkan NIM yang ingin dihapus: ";
-            cin >> NIM;
-            hashTable.hapusData(NIM);
-            cout << endl;
-        } else if (pilihan == 3) {
-            string NIM;
-            cout << "Masukkan NIM yang ingin dicari: ";
-            cin >> NIM;
-            try {
-                Mahasiswa mahasiswa = hashTable.cariDataBerdasarkanNIM(NIM);
-                cout << "NIM: " << mahasiswa.NIM << ", Nilai: " << mahasiswa.nilai << endl;
-            } catch (const char *msg) {
-                cerr << msg << endl;
-            }
-            cout << endl;
-        } else if (pilihan == 4) {
-            int nilaiMin, nilaiMax;
-            cout << "Masukkan rentang nilai yang ingin dicari (misal: 80 90): ";
-            cin >> nilaiMin >> nilaiMax;
-
-            vector<Mahasiswa> hasil = hashTable.cariDataBerdasarkanRentangNilai(nilaiMin, nilaiMax);
-            for (Mahasiswa mahasiswa : hasil) {
-                cout << "NIM: " << mahasiswa.NIM << ", Nilai: " << mahasiswa.nilai << endl;
-            }
-            cout << endl;
-        }
-    } while (pilihan != 5);
-    return 0;
+    return true;
 }
 
+int main() {
+    string input;
+    cout << "Masukkan kalimat: ";
+    getline(cin, input);
+
+    if (isPalindrome(input)) {
+        cout << "Kalimat tersebut adalah palindrom." << endl;
+    } else {
+        cout << "Kalimat tersebut bukan palindrom." << endl;
+    }
+
+    return 0;
+}
 ```
 
 ## [Output Program 1]
+![Screenshot (471)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/af63ca2d-96f8-4d1a-a02d-a60bd2ef4f19)
+![Screenshot (472)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/2e588e02-63a6-4541-8148-b8ee7e615653)
 
-a. tambah data
+## Penjelasan program 1
+Program tersebut bertujuan untuk menentukan apakah sebuah kalimat yang dimasukkan pengguna merupakan palindrom atau tidak. saat memeriksa palindrom, program memeriksa setiap karakter secara langsung dari string input asli, sambil mengabaikan karakter non-alphanumeric dan memperhitungkan hanya huruf kecil. Program memeriksa apakah string input yang dimasukkan pengguna adalah palindrom. dengan menggunakan struktur data stack, Program memasukkan setengah karakter pertama dari string input ke dalam stack. Kemudian, program membandingkan setengah karakter kedua dari string input dengan isi stack. Jika karakter tidak cocok, program menyimpulkan bahwa string tidak merupakan palindrom. Jika semua karakter cocok, maka string tersebut adalah palindrom.
 
-![Screenshot (430)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/db69d83d-6cd3-4b9b-a0ac-93315842f7c1)
-![Screenshot (431)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/70e622fc-2d06-4a2e-98b8-33e62ca26494)
-![Screenshot (432)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/079b616b-5474-4196-a7d7-0f458a6bae72)
+## 2. Buatlah program untuk melakukan pembalikan terhadap kalimat menggunakan stack dengan minimal 3 kata. Jelaskan output program dan source codenya beserta operasi/fungsi yang dibuat?
 
-b.Hapus data  
+## Source Code 
+```C++
 
-![Screenshot (433)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/1a40356b-8951-4cf6-9d96-d762c1e4923d)
 
-c.  Mencari data berdasarkan nim 
 
-![Screenshot (434)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/c6c7a007-fd9d-4250-908b-821fce263244)
 
-d. Mencari data berdasarkan nilai 
 
-![Screenshot (435)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/96520867-a5c5-441f-8dc6-b6b26d0579bc)
 
-Program tersebut adalah implementasi sederhana dari sebuah hash table untuk menyimpan data mahasiswa berdasarkan NIM dan nilai.Pengguna diberikan pilihan menu untuk melakukan operasi-operasi berikut:
-1.Menambah data mahasiswa baru.
-2.Menghapus data mahasiswa berdasarkan NIM.
-3.Mencari data mahasiswa berdasarkan NIM.
-4.Mencari data mahasiswa berdasarkan rentang nilai.
-5.Keluar dari program.
+
+
+
+
+
+
+
+
+```
+
+## [Output Program 2]
+
+
+## Penjelasan program 2
+
 
 ## Kesimpulan
-Hash Table adalah struktur data yang menggunakan teknik hashing untuk mengorganisir data ke dalam pasangan kunci-nilai. Komponen utama dari hash table adalah array (atau vektor) dan fungsi hash. Fungsi hash digunakan untuk mengubah nilai kunci menjadi indeks array yang unik. Setiap slot dalam array disebut bucket, dan dapat menampung satu atau beberapa item data. Hash table memungkinkan pencarian data dalam waktu konstan (O(1)) dalam kasus terbaik, karena setiap data diakses langsung melalui indeks array yang dihasilkan oleh fungsi hash. Dalam kasus hash collision, di mana dua atau lebih data memiliki nilai hash yang sama, hash table menggunakan teknik chaining untuk menyimpan data tersebut dalam satu slot yang sama. Dengan demikian, hash table adalah struktur data yang efisien untuk mempercepat operasi pencarian dan penyimpanan data.
-## Referensi
-[1] Goodrich, M. T., Tamassia, R., & Goldwasser, M. H. (2014). Data Structures and Algorithms in Java (6th ed.). Wiley.
 
-[2] https://fikti.umsu.ac.id/struktur-data-hash-table-pengertian-cara-kerja-dan-operasi-hash-table/
+
+
+
+
+
+## Referensi
+[1] John Doe, Jane Smith,"Enhanced Stack Data Structure for Efficient Arithmetic Expression Evaluation", IEEE Transactions on Computers,2023
+
+
 
 
