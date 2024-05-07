@@ -1,4 +1,4 @@
-# <h1 align="center">Laporan Praktikum Modul 5 Hash Table </h1>
+# <h1 align="center">Laporan Praktikum Modul 6 Stack </h1>
 <p align="center">Arnanda setya nosa putra</p>
 <p align="center">231102180</p>
 <p align="center">IF 11 E</p>
