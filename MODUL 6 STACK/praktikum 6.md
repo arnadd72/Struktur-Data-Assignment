@@ -180,27 +180,66 @@ Program tersebut bertujuan untuk menentukan apakah sebuah kalimat yang dimasukka
 
 ## Source Code 
 ```C++
+//2311102180
 
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
 
+string reverseSentence(string sentence) {
+    stack<char> charStack;
 
+    for (char c : sentence) {
+        charStack.push(c);
+    }
 
+    string reversedSentence = "";
 
+    while (!charStack.empty()) {
+        reversedSentence += charStack.top();
+        charStack.pop();
+    }
 
+    return reversedSentence;
+}
 
+int main() {
+    char pilihan;
+    do {
+        string kalimat;
+        cout << "Masukkan kalimat: ";
+        getline(cin, kalimat);
 
+      
+        if (kalimat.empty()) {
+            cout << "Kalimat tidak boleh kosong. Silakan coba lagi." << endl;
+            continue;
+        }
 
+        string hasil = reverseSentence(kalimat);
 
+        cout << "Hasil: " << hasil << endl;
 
+        
+        cout << "Apakah anda ingin mengubah kalimatnya? (y/n): ";
+        cin >> pilihan;
+        cin.ignore(); 
+    } while (pilihan == 'y' || pilihan == 'Y');
 
-
-
+    return 0;
+}
 ```
 
 ## [Output Program 2]
-
+![Screenshot (476)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/f309f346-5704-442b-b865-bc1614c0351b)
 
 ## Penjelasan program 2
+pada program tersebut, pengguna diminta memasukkan sebuah kalimat. Kemudian, kalimat tersebut dibalikkan menggunakan fungsi "reverseSentence()" yang menggunakan struktur data stack. kemudian, hasilnya akan ditampilkan ke layar. selanjutnya pengguna bisa mengubah kata yang ingin dibalikkan lagi atau tidak. Jika pengguna memilih "y", maka program akan kembali meminta input kalimat dan mengulangi proses pembalikan. Jika pengguna memilih untuk tidak melanjutkan, program akan selesai dan menampilkan pesan "Terima kasih!".
 
+
+kemudian pada bagian operasi atau fungsi yang digunakan :
+"reverseSentence(string sentence)" Fungsi ini menerima sebuah kalimat dan menggunakan stack untuk membalikkan kalimat tersebut. Setiap karakter dari kalimat dimasukkan ke dalam stack, kemudian karakter-karakter tersebut dikeluarkan dari stack satu per satu untuk membentuk kalimat terbalik.
 
 ## Kesimpulan
 
