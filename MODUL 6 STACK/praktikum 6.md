@@ -243,9 +243,9 @@ kemudian pada bagian operasi atau fungsi yang digunakan :
 
 ## Kesimpulan
 
+stack (tumpukan) adalah struktur data yang mengikuti prinsip LIFO (Last In, First Out), yang berarti elemen yang terakhir dimasukkan ke dalam stack akan menjadi elemen pertama yang dikeluarkan. Ini mirip dengan tumpukan benda di kehidupan nyata, di mana Anda menumpuk satu objek di atas yang lain dan yang Anda ambil pertama kali adalah yang terakhir Anda letakkan. Stack biasanya memiliki dua operasi utama: "push" untuk menambahkan elemen ke dalam stack, dan "pop" untuk mengeluarkan elemen teratas dari stack.
 
-
-
+stack biasanya diimplementasikan menggunakan struktur data dari STL (Standard Template Library) yang disebut "std::stack". Struktur data ini menyediakan fungsi-fungsi yang diperlukan untuk memanipulasi stack dengan mudah.
 
 
 ## Referensi
