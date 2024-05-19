@@ -147,9 +147,7 @@ Mahasiswa
 
 ## [Source Code 1]
 ```C++
-// no 1
-// Arvel Mahsa
-//2311102188
+//2311102180
 #include <iostream>
 using namespace std;
 const int maksimalQueue = 5; // Maksimal antrian
@@ -272,13 +270,9 @@ int main()
 }
 ```
 ## [Output Program 1 ]
-![output nomor 1](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/08ad7b6d-6191-4246-9a2a-397938a66146)
+![Screenshot (480)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/3bf21006-30ad-44fa-b629-b9c59abca10c)
 
-Program diatas adalah penerapan queue dengan konsep single linked list. Dengan konsep linked list user dapat menginputkan
-antrean sebanyak mungkin tanpa harus mengubah jumlah array. Dalam linked list perlu mendeklarasikan struct dan node serta 
-variabel pointer tambahan seperti diatas. Beberapa konsep yang digunakan pada fungsi queue diganti menggunakan konsep 
-linked list.
-
+Program di atas merupakan implementasi antrean (queue) dengan menggunakan konsep linked list tunggal (single linked list). Dengan menggunakan konsep linked list, pengguna dapat memasukkan antrean sebanyak yang diinginkan tanpa harus mengubah ukuran array. Dalam linked list, perlu dideklarasikan struct dan node serta variabel pointer tambahan seperti yang telah disebutkan. Beberapa konsep yang digunakan dalam fungsi queue diubah dengan menggunakan konsep linked list.
 ## [Source Code 2]
 ```C++
 // //No2
