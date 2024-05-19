@@ -489,7 +489,7 @@ Program diatas merupakan penerapan dari nomor 1 dimana konsep queue dari Array d
 menu seperti diatas, kemudian pada fungsi yang akan dijalankan menggunakan konsep single linked list.
 
 ## Kesimpulan
-
+Queue dalam C++ adalah struktur data FIFO yang dapat diimplementasikan dengan array atau linked list. Implementasi dengan array memiliki kapasitas tetap, sedangkan linked list memungkinkan penambahan elemen dinamis. Operasi dasar meliputi EnQueue, DeQueue, IsEmpty, IsFull, dan Peek/Front. Penelitian terbaru menyoroti penggunaan queue dalam optimisasi antrian dan jaringan komputer, serta analisis efisiensi memori dan performa algoritma.
 
 
 
