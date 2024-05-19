@@ -292,201 +292,129 @@ int main()
 Program di atas merupakan implementasi antrean (queue) dengan menggunakan konsep linked list tunggal (single linked list). Dengan menggunakan konsep linked list, pengguna dapat memasukkan antrean sebanyak yang diinginkan tanpa harus mengubah ukuran array. Dalam linked list, perlu dideklarasikan struct dan node serta variabel pointer tambahan seperti yang telah disebutkan. Beberapa konsep yang digunakan dalam fungsi queue diubah dengan menggunakan konsep linked list.
 ## [Source Code 2]
 ```C++
-// //No2
+//2311102180
 #include <iostream>
+#include <string>
+
 using namespace std;
+
 struct Node
 {
-    string nama_mhs_188;
-    string NIM_mhs_188;
+    string namaMahasiswa;
+    string nim;
     Node *next;
-}; // deklarasi node
-Node *head, *tail, *newNode, *temp, *del, *current, *count;
+};
 
-// inisalisasi node linked listt
-void init()
+Node *front = nullptr;
+Node *back = nullptr;
+
+bool isFull()
 {
-    head = NULL;
-    tail = NULL;
+    return false;
 }
 
 bool isEmpty()
-{ // mengecek apakah linked list nya kososng atau tidak
-    if (head == NULL)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+{
+    return front == nullptr;
 }
 
-void enqueueAntrian(string nama_mhs_188, string NIM_mhs_188)
-{ // Fungsi menambahkan antrian
-    newNode = new Node;
-    newNode->nama_mhs_188 = nama_mhs_188;
-    newNode->NIM_mhs_188 = NIM_mhs_188;
-    newNode->next = NULL;
+void enqueueAntrian(string nama, string nim)
+{
+    Node *newNode = new Node;
+    newNode->namaMahasiswa = nama;
+    newNode->nim = nim;
+    newNode->next = nullptr;
 
     if (isEmpty())
-    { // Kondisi ketika queue kosong
-        head = newNode;
-        tail = newNode;
-        tail->next = NULL;
+    {
+        front = newNode;
+        back = newNode;
     }
     else
-    { // Antrianya ada isi
-        tail->next = newNode;
-        tail = newNode;
-        tail->next = NULL;
+    {
+        back->next = newNode;
+        back = newNode;
     }
 }
 
 void dequeueAntrian()
-{ // Fungsi mengurangi antrian
+{
     if (isEmpty())
     {
-        cout << "Antrian kosong" << endl;
+        cout << "Queue Kosong" << endl;
+        return;
     }
-    else
+
+    Node *temp = front;
+    front = front->next;
+    delete temp;
+
+    if (front == nullptr)
     {
-        if (head->next != NULL)
-        {
-            temp = head;
-            head = head->next;
-            delete temp;
-        }
-        else
-        {
-            head = tail = NULL;
-        }
+        back = nullptr;
     }
 }
 
-int hitungQueue()
-{ // Fungsi menghitung banyak antrian
-    count = head;
-    int hitung_antrean = 0;
-    while (count != NULL)
+int countQueue()
+{
+    int count = 0;
+    Node *current = front;
+    while (current != nullptr)
     {
-        count = count->next;
-        hitung_antrean++;
+        count++;
+        current = current->next;
     }
-    return hitung_antrean;
-}
-void bersihkanQueue()
-{ // Fungsi menghapus semua antrian
-    temp = head;
-    while (temp != NULL)
-    {
-        del = temp;
-        temp = temp->next;
-        delete del;
-    }
-    head = tail = NULL;
+    return count;
 }
 
-void lihatQueue()
-{ // Fungsi melihat antrian
-    cout << "<<< Data antrian mahasiswa >>>\n " << endl;
-    temp = head;
-    int nomor = 1;
-    while (temp != NULL)
+void clearQueue()
+{
+    while (front != nullptr)
     {
-        cout << temp->nama_mhs_188 << ", " << temp->NIM_mhs_188 << " Antrian Nomor : "<< nomor << endl;
-        temp = temp->next;
-        nomor++;
+        Node *temp = front;
+        front = front->next;
+        delete temp;
     }
-    cout << endl;
-    cout << endl;
+    back = nullptr;
+}
+
+void viewQueue()
+{
+    cout << "Data Queue Mahasiswa:" << endl;
+    Node *current = front;
+    while (current != nullptr)
+    {
+        cout << "Nama: " << current->namaMahasiswa << ", NIM: " << current->nim << endl;
+        current = current->next;
+    }
 }
 
 int main()
 {
-    int number;
-    string nama_mhs_188, NIM_mhs_188;
-    while(true)
-    {system("cls");
-    cout << " MENU ANTREAN MAHASISWA\n\n";
-    cout << " 1. Tambahkan     Antrian\n ";
-    cout << "2. Hapus Antrian pertama\n";
-    cout << " 3. Hitung        Antrian\n";
-    cout << " 4. Bersihkan     Antrian\n";
-    cout << " 5. Lihat         Antrian\n\n";
-    cout << "Choose Number : ";
-    cin>> number;
-    cout << endl;
-    switch(number)
-    {
-        case 1 : 
-        cout << "Masukan Nama Mahasiswa : ";
-        cin >> nama_mhs_188;
-        cout << "Masukan NIM  Mahasiswa : ";
-        cin >> NIM_mhs_188;
-        enqueueAntrian(nama_mhs_188,NIM_mhs_188);
-        cout << "Antrean berhasil ditambahkan \n\n";
-        system("pause");
-        break;
+    enqueueAntrian("Abdul", "123456789");
+    enqueueAntrian("hasyim", "987654321");
+    viewQueue();
+    dequeueAntrian();
+    viewQueue();
 
-        case 2 :
-        dequeueAntrian();
-        cout << "Antrian Pertama Berhasil Dihapus\n\n";
-        system("pause");
-        break;
+    cout << "Jumlah elemen dalam antrean: " << countQueue() << endl;
+    enqueueAntrian("Citra", "1122334455");
+    enqueueAntrian("Dewi", "5544332211");
+    viewQueue();
+    cout << "Jumlah elemen dalam antrean: " << countQueue() << endl;
+    clearQueue();
+    cout << "Antrean setelah clearQueue:" << endl;
+    viewQueue();
 
-        case 3 :
-        cout << "Jumlah Antrean Sekarang : " << hitungQueue() << endl;
-        system("pause");
-        break;
-
-        case 4 : 
-        bersihkanQueue();
-        cout << "Antrean Telah Dibersihkan\n\n ";
-        system("pause");
-        break;
-
-        case 5 :
-        lihatQueue();
-        system("pause");
-        break;
-
-        default :
-        cout << "Choose correct number!";
-        system ("pause");
-        break;
-    }
- }
     return 0;
 }
+
 ```
 ## [Output Program 2]
-### Tampilan Menu Program
-![menu ](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/9076f254-4f85-4d14-8e1a-fda615adf381)
+### output Program
+![Screenshot (482)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/8b845e2c-084b-465b-9de8-d87a4d2491aa)
 
-### Tampilan Menu Tambahkan Queue
-![menu tambah antrean](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/a0d5b75a-03b7-4972-8291-bbe996eb85d7)
-
-### Tampilan Menu Lihat Queue
-![menu lihat sebelum dihapus](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/f1280d97-2686-4937-9cf6-42afce00f475)
-
-### Tampilan Menu Hapus Queue
-![menu hapus](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/c50457ae-3085-4d61-af8f-12ca34b3d040)
-
-### Tampilan Menu Lihat Queue (Setelah Dihapus)
-![menu lihat setelah dihapus](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/b3a8ed54-2e70-4e12-abda-4f8000ba7524)
-
-### Tampilan Menu Hitung Queue (Setelah Dihapus)
-![menu hitung setelah dihapus](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/d43c7abd-be14-4e9b-94db-cb69c5cfad97)
-
-### Tampilan Menu Bersihkan Queue
-![menu bersihkan](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/8f4ee9b2-473f-4df1-9aa0-217521af50b1)
-
-### Tampilan Menu Lihat Queue (Setelah Dibersihkan)
-![tampilan menu lihat setelah dibersihkan](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/417f9626-bd3d-43e4-9ae0-a277eff13093)
-
-Program diatas merupakan penerapan dari nomor 1 dimana konsep queue dari Array diganti dengan linked list. Konsep queue dibuat
-menu seperti diatas, kemudian pada fungsi yang akan dijalankan menggunakan konsep single linked list.
+Program ini adalah implementasi antrean (queue) menggunakan linked list. Program ini mencakup operasi dasar seperti menambah elemen ke antrean (enqueue), menghapus elemen dari antrean (dequeue), memeriksa apakah antrean kosong (isEmpty), dan menghitung jumlah elemen dalam antrean (countQueue). Selain itu, program ini memiliki fitur tambahan untuk mengosongkan seluruh antrean (clearQueue) dan menampilkan semua elemen dalam antrean (viewQueue). Implementasi ini memungkinkan penanganan dinamis jumlah elemen tanpa batasan kapasitas yang tetap, berbeda dengan implementasi array yang memiliki keterbatasan kapasitas tetap.
 
 ## Kesimpulan
 Queue dalam C++ adalah struktur data FIFO yang dapat diimplementasikan dengan array atau linked list. Implementasi dengan array memiliki kapasitas tetap, sedangkan linked list memungkinkan penambahan elemen dinamis. Operasi dasar meliputi EnQueue, DeQueue, IsEmpty, IsFull, dan Peek/Front. Penelitian terbaru menyoroti penggunaan queue dalam optimisasi antrian dan jaringan komputer, serta analisis efisiensi memori dan performa algoritma.
