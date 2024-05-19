@@ -5,69 +5,17 @@
 
 # Dasar Teori
 ## Pengertian Queue
-Antrian (Queue) adalah kumpulan data dimana penambahan elemen hanya bisa
-dilakukan pada suatu ujung yaitu rear atau tail atau belakang, dan penghapusan dilakukan melalui
-ujung yang lainnya yaitu front atau head atau depan. Antrian FIFO (First In First Out) adalah
-elemen yang lebih dulu disisipkan merupakan elemen yang akan lebih dulu diambil.
-Operasi-operasi dasar dari sebuah queue :
 
-1. Enqueue : proses penambahan elemen di posisi belakang
-   
-2. Dequeue : proses pengambilan elemen di posisi depan
 
-Selain operasi dasar di atas, ada pula operasi-operasi lain yang dapat dilakukan terhadap
-sebuah queue yaitu :
 
-1. Operasi pemeriksaan queue kosong (fungsi kosong)
 
-2. Operasi pemeriksaan queue penuh (fungsi penuh).
-   
-3. Operasi inisialisasi queue (fungsi inisialisasi) 
 
-## Karakteristik
-Hal-hal/karakteristik yang penting dalam pengelolaan antrian adalah :
 
-1. Elemen antrian : Item-item data yang terdapat/diorganisasikan pada antrian
 
-2. Front : Elemen terdepan dari antrian
 
-3. Tail : Elemen terakhir dari antrian
 
-4. Panjang Antrian : Yaitu banyaknya (jumlah) elemen pada antrian,
 
-   ada dua jenis panjang :
 
-a. Panjang aktual : merepresentasikan banyak item data pada antrian pada suatu saat.
-
-b. Kapasitas antrian : panjang maksimum yang diizinkan pada antrian
-
-5. Status : Merepresentasikan kondisi antrian pada satu saat,
-
-   terdapat 3 jenis status pada antrian, yaitu :
-
-a. Kosong
-
-Bila tidak ada elemen pada antrian, pada kondisi ini tidak mungkin
-dilakukan operasi DeQueue terhadap antrian. DeQueue pada
-antrian/queue kosong menyebabkan kondisi keselahan Underflow
-
-b. Isi tapi tidak penuh
-
-Bila paling sedikit terdapat satu elemen pada antrian dan paling
-banyak (n-1) elemen, dimana n adalah kapasitas antrian.
-
-c. Penuh
-
-Bila jumlah elemen pada antrian mencapai kapasitas antrian.
-Pada kondisi ini tidak mungkin dilakukan operasi EnQueue
-terhadap antrian. Penambahan elemen baru (EnQueue)
-menyebabkan kondidi overflow.
-Untuk implementasi struktur data antrian pada program dapat dilakukan
-dengan 2 cara, yaitu :
-
-1. Array
-
-2. Linked List 
 
 # Guided
 ## Guided 1
@@ -190,9 +138,7 @@ int main()
 }
 ```
 ## Output Guided 1
-![Screenshot (244)](https://github.com/arvelmahsa/Struktur-Data-Assignment/assets/161669026/c41ab00e-9765-465c-8980-cc6d1fdcc65d)
-
-
+![Screenshot (479)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/ec8da461-9921-4ba1-8c4d-046849da1718)
 # Unguided 
 1. Ubahlah penerapan konsep queue pada bagian guided dari array menjadi
 linked list
@@ -533,17 +479,16 @@ Program diatas merupakan penerapan dari nomor 1 dimana konsep queue dari Array d
 menu seperti diatas, kemudian pada fungsi yang akan dijalankan menggunakan konsep single linked list.
 
 ## Kesimpulan
-Queue adalah struktur data linier yang mengikuti prinsip First In First Out, elemen yang pertama kali diinputkan akan menjadi elemen yang pertama kali dikeluarkan. Contoh Konsep antrian seperti antrian di kasir atau di loket tiket, dimana orang yang datang pertama akan dilayani terlebih dahulu.
-Selain itu Queue bisa menggunakan fungsi Linked List.
+
+
+
+
 
 ## Referensi
 [1] Pengertian Queue. 
 
-[file:///C:/Users/Acer/Downloads/ranita%20sari(1).pdf](https://repository.unikom.ac.id/41990/1/pertemuan%203.pdf)
+
 
 [2] Karakteristik Queue. 
 
-Nixon Erzed, Karakteristik Queue, Struktur data Array pada
-STACK dan QUEUE, (8), Halaman 13.
-https://lms-paralel.esaunggul.ac.id/pluginfile.php?file=%2F87682%2Fmod_resource%2Fcontent%2F1%2F08_7228_ccs120_112018_pdf.pdf
 
