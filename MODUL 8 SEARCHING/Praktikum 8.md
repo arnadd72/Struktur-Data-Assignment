@@ -5,9 +5,7 @@
 
 # Dasar Teori
 ## Searching
-
-
-
+ Algoritma pencarian(Searching) dalam pemrograman adalah proses mencari elemen tertentu dalam kumpulan data yang diberikan. Tujuannya adalah untuk menemukan apakah elemen tersebut ada dalam data, dan jika ya, di mana posisinya. Algoritma pencarian biasanya dibagi menjadi dua jenis utama: pencarian linier (sequential search) dan pencarian biner (binary search). Pencarian linier melakukan pencarian elemen satu per satu secara berurutan dalam data, sementara pencarian biner membagi data menjadi dua bagian setiap langkahnya untuk mencari elemen target dalam logaritma waktu[1].
 
 # Guided
 ## Guided 1
@@ -299,12 +297,13 @@ int main() {
  Program tersebut bertujuan untuk menghitung berapa banyak angka 4 yang muncul dalam sebuah array yang sudah ditentukan.program akan menampilkan hasil jumlah kemunculan angka 4 dalam array tersebut. Jika angka 4 tidak ditemukan sama sekali, program akan memberikan pesan yang sesuai.
 
 ## Kesimpulan
+   Algoritma pencarian digunakan untuk mencari elemen tertentu dalam kumpulan data yang diberikan. Tujuan utamanya adalah untuk menemukan apakah elemen tersebut ada dalam data, dan jika ada, di mana posisinya.Ada dua jenis utama algoritma pencarian, yaitu pencarian linier (sequential search) dan pencarian biner (binary search). Pencarian linier melakukan pencarian secara berurutan dari awal hingga akhir data, sementara pencarian biner membagi data menjadi dua bagian setiap langkahnya untuk mencari elemen target secara efisien.
 
-
+Pencarian biner sering kali lebih efisien daripada pencarian linier, terutama pada data yang sudah terurut. Pencarian biner memiliki kompleksitas waktu logaritma, yang membuatnya lebih cepat dalam menemukan elemen target dalam data yang besar dibandingkan dengan pencarian linier.Pemilihan algoritma pencarian yang tepat tergantung pada jenis data, ukuran data, dan apakah data sudah terurut atau tidak. Penting untuk memahami kelebihan dan kelemahan dari masing-masing algoritma agar dapat memilih algoritma yang paling sesuai dengan kebutuhan spesifik aplikasi.
 
 
 ## Referensi
-[1]
+[1] P. S. Kadam, Dr. V. K. Chandrakar, "A Comparative Study of Searching Algorithms in C++", International Journal of Computer Applications (0975 – 8887),2021.
  
 [2] 
 
