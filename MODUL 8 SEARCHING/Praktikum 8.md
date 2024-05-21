@@ -4,34 +4,9 @@
 <p align="center">IF 11 E</p>
 
 # Dasar Teori
-## Queue
-Queue dalam C++ adalah struktur data linear yang mengikuti prinsip FIFO (First In, First Out). Ini berarti elemen yang pertama kali dimasukkan akan menjadi elemen pertama yang dikeluarkan. Queue digunakan dalam berbagai aplikasi seperti manajemen tugas di printer, penjadwalan proses dalam sistem operasi, dan antrian dalam layanan pelanggan.
+## Searching
 
-Implementasi queue dalam C++ sering dilakukan menggunakan array atau linked list. Pada implementasi berbasis array, queue memiliki batas kapasitas yang tetap, sedangkan pada implementasi berbasis linked list, kapasitasnya dapat bertambah sesuai kebutuhan karena node baru bisa ditambahkan secara dinamis[1].
 
-Operasi Dasar Queue 
-
-1.EnQueue: Menambahkan elemen ke bagian belakang antrian.
-
-2.DeQueue: Menghapus elemen dari bagian depan antrian.
-
-3.IsEmpty: Memeriksa apakah antrian kosong.
-
-4.IsFull: Memeriksa apakah antrian penuh (berlaku pada implementasi berbasis array).
-
-5.Peek/Front: Mengambil elemen di depan antrian tanpa menghapusnya.
-
-Implementasi Queue dengan Linked List
-
-Dalam implementasi menggunakan linked list, queue terdiri dari node-node yang dihubungkan satu sama lain. Setiap node memiliki dua komponen: data dan pointer ke node berikutnya. Berikut adalah langkah-langkah dasar dalam implementasi ini:
-
-1.Struct Node: Mendefinisikan struktur node dengan data dan pointer ke node berikutnya.
-
-2.Pointer: Menyimpan alamat node pertama (front) dan node terakhir (rear).
-
-3.Fungsi EnQueue: Menambahkan node baru di akhir linked list.
-
-4.Fungsi DeQueue: Menghapus node dari awal linked list dan mengatur ulang pointer front[2].
 
 
 # Guided
