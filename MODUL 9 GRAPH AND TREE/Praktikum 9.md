@@ -816,11 +816,12 @@ int main() {
 ```
 ## [Output Program 2]
 ### output Program
-![Screenshot (482)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/8b845e2c-084b-465b-9de8-d87a4d2491aa)
+![Screenshot (497)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/bdf9eeb0-b231-4108-8b8c-902f6b0148a7)
+![Screenshot (498)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/63c51793-a79d-4928-824a-a72ae65c5c02)
 
-
-
-
+Pada program ini, sebuah pohon biner direpresentasikan dengan menggunakan sebuah struktur data "struct Pohon", yang memiliki empat anggota: "data" untuk menyimpan data pada setiap node, "left" dan "right" untuk menunjukkan node anak kiri dan kanan, serta "parent" untuk menunjukkan node induk dari suatu node.
+Program ini juga menyediakan berbagai fungsi untuk melakukan operasi pada pohon biner, seperti membuat node baru, menyisipkan node anak (kiri atau kanan), menghapus node, mengubah data pada suatu node, dan menampilkan informasi tentang suatu node, seperti parent, sibling, dan child-nya.
+Program juga menyediakan fungsi-fungsi untuk melakukan penelusuran (traversal) pada pohon biner, yaitu preOrder, inOrder, dan postOrder traversal, serta untuk menghitung karakteristik pohon seperti ukuran (size) dan tinggi (height).
 
 
 ## Kesimpulan
