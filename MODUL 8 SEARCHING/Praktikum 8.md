@@ -43,7 +43,7 @@ int main()
 ```
 ## Output Guided 1
 ![Screenshot (483)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/fb2190cb-0827-46d6-a19e-e737c503d788)
-
+Program ini mengimplementasikan algoritma pencarian sederhana yang dikenal sebagai Sequential Search,Program ini akan memeriksa setiap elemen dalam array secara berurutan mulai dari indeks pertama hingga terakhir.Setelah pencarian selesai, program menampilkan hasilnya. Jika elemen yang dicari ditemukan dalam array, program akan mencetak pesan yang menyatakan bahwa elemen tersebut ditemukan pada indeks tertentu. Jika tidak ditemukan, program akan mencetak pesan bahwa elemen tersebut tidak ditemukan.
 ## Guided 2
 ```C++
 #include <iostream> 
@@ -123,6 +123,8 @@ int main() {
 ```
 ## Output Guided 2
 ![Screenshot (488)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/b20cb54a-fbb6-41ea-bb19-ba624ac002ea)
+
+Program ini mengimplementasikan selection sort untuk pengurutan data dan binary search untuk pencarian data,Program kemudian menampilkan data awal yang belum diurutkan, meminta pengguna memasukkan nilai yang ingin dicari, dan mengurutkan array menggunakan algoritma selection sort.Setelah array diurutkan, program menampilkan array yang telah diurutkan dan melanjutkan dengan melakukan pencarian binary search untuk nilai yang dimasukkan pengguna.Jika nilai ditemukan, program mencetak indeks di mana nilai tersebut berada, jika tidak, program mencetak pesan bahwa nilai tidak ditemukan.
 
 # Unguided 
 1. Buatlah sebuah program untuk mencari sebuah huruf pada sebuah kalimat yang 
