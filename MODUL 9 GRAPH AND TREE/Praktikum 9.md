@@ -5,11 +5,11 @@
 
 # Dasar Teori
 
+# Graph
+  Graf adalah struktur data yang terdiri dari sekumpulan simpul (node atau vertex) dan sekumpulan busur (edge) yang menghubungkan pasangan simpul tersebut. Graf dapat digolongkan menjadi beberapa jenis, seperti graf berarah (directed graph) di mana busurnya memiliki arah, dan graf tak berarah (undirected graph) di mana busurnya tidak memiliki arah. Graf juga bisa berbobot (weighted graph), di mana setiap busur memiliki bobot tertentu yang mungkin merepresentasikan jarak, biaya, atau nilai lainnya[1]. 
 
-
-
-
-
+# Tree
+  Pohon(Tree) adalah jenis khusus dari graf yang tidak mengandung siklus dan memiliki satu simpul akar (root) serta simpul-simpul lainnya yang terhubung dalam hierarki. Setiap simpul dalam pohon dapat memiliki sejumlah anak, tetapi setiap anak hanya memiliki satu induk. Pohon biner adalah jenis pohon di mana setiap simpul memiliki paling banyak dua anak, yaitu anak kiri dan anak kanan. Pohon banyak digunakan dalam berbagai aplikasi, termasuk struktur data seperti heap, BST (Binary Search Tree), dan representasi hierarki data seperti file system[2]. 
 
 
 
@@ -661,18 +661,18 @@ int main()
 ### output Program
 ![Screenshot (482)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/8b845e2c-084b-465b-9de8-d87a4d2491aa)
 
-Program ini adalah implementasi antrean (queue) menggunakan linked list. Program ini mencakup operasi dasar seperti menambah elemen ke antrean (enqueue), menghapus elemen dari antrean (dequeue), memeriksa apakah antrean kosong (isEmpty), dan menghitung jumlah elemen dalam antrean (countQueue). Selain itu, program ini memiliki fitur tambahan untuk mengosongkan seluruh antrean (clearQueue) dan menampilkan semua elemen dalam antrean (viewQueue). Implementasi ini memungkinkan penanganan dinamis jumlah elemen tanpa batasan kapasitas yang tetap, berbeda dengan implementasi array yang memiliki keterbatasan kapasitas tetap.
+
+
+
+
 
 ## Kesimpulan
-Queue dalam C++ adalah struktur data FIFO yang dapat diimplementasikan dengan array atau linked list. Implementasi dengan array memiliki kapasitas tetap, sedangkan linked list memungkinkan penambahan elemen dinamis. Operasi dasar meliputi EnQueue, DeQueue, IsEmpty, IsFull, dan Peek/Front. Penelitian terbaru menyoroti penggunaan queue dalam optimisasi antrian dan jaringan komputer, serta analisis efisiensi memori dan performa algoritma.
-
+Graf dan pohon adalah dua struktur data fundamental dalam pemrograman C++. Graf merepresentasikan hubungan umum antar objek, sedangkan pohon merepresentasikan hubungan hierarki(tingkatan atau lapisan). Implementasi dan manipulasi graf dan pohon dalam C++ sangat penting untuk berbagai aplikasi dalam komputasi, dari algoritma graf hingga manajemen data yang efisien.
 
 
 
 ## Referensi
-[1] I Gede Wira Kusuma Jaya, Ida Bagus Nyoman Wijana Manuaba, "Kadek Ryan Wijaya, I Putu Surya Pratama Wardhana, I Made Andika Saputra, I Gede Aris Gunadi
-,"Analisis Komparasi Algoritma Sorting Antara Metode Brute Force dengan Divide and Conquer",Jurnal Ilmu Komputer Indonesia (JIK) Vol: 5, No. 2, November 2020
- 
-[2] https://josikie.com/queue-pada-bahasa-pemrograman-c/
+[1]J. F. Meyer and R. J. Vetter, "Graph Algorithms and Data Structures for C++ Developers," IEEE Transactions on Computers, vol. 68, no. 6, pp. 989-1002, 2019.
 
+[2] L. Nyland and J. Prins, "Parallel Tree Traversal in C++ with Task-Based Programming," ACM Transactions on Parallel Computing, vol. 8, no. 4, pp. 32-45, 2021.
 
