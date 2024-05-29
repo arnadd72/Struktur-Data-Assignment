@@ -411,250 +411,407 @@ descendant dari node yang diinput kan!
 
 ## [unguided 1]
 ```C++
-//2311102180
 #include <iostream>
+#include <iomanip>
+#include <string>
 using namespace std;
-const int maksimalQueue = 5; // Maksimal antrian
-int front = 0;               // Penanda antrian
-int back = 0;                // Penanda
-struct Node
-{
-    string data;
-    Node *next;
-}; // deklarasi node
-Node *head, *tail, *newNode, *temp, *del, *current, *count;
-// inisalisasi node linked listt
-void init()
-{
-    head = NULL;
-    tail = NULL;
-}
-bool isEmpty()
-{ // mengecek apakah linked list nya kososng atau tidak
-    if (head == NULL)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
 
-void tambahAntrean(string data)
-{ // Fungsi menambahkan antrian
-    newNode = new Node;
-    newNode->data = data;
-    newNode->next = NULL;
-    if (isEmpty())
-    { // Kondisi ketika queue kosong
-        head = newNode;
-        tail = newNode;
-        tail->next = NULL;
-    }
-    else
-    { // Antrianya ada isi
-        tail->next = newNode;
-        tail = newNode;
-        tail->next = NULL;
-    }
-}
+int main() {
+    int jumlahSimpul2311102180;
+    cout << "Silakan masukkan jumlah simpul: ";
+    cin >> jumlahSimpul2311102180;
 
-void kurangiAntrean()
-{ // Fungsi mengurangi antrian
-    if (isEmpty())
-    {
-        cout << "Antrian kosong" << endl;
+    string simpul[jumlahSimpul2311102180];
+    int busur[jumlahSimpul2311102180][jumlahSimpul2311102180];
+
+    for (int i = 0; i < jumlahSimpul2311102180; i++) {
+        cout << "Simpul " << i + 1 << ": ";
+        cin >> simpul[i];
     }
-    else
-    {
-        if (head->next != NULL)
-        {
-            temp = head;
-            head = head->next;
-            delete temp;
-        }
-        else
-        {
-            head = tail = NULL;
+
+    for (int i = 0; i < jumlahSimpul2311102180; i++) {
+        for (int j = 0; j < jumlahSimpul2311102180; j++) {
+            cout << "Silakan masukkan bobot antara simpul " << simpul[i] << " dan " << simpul[j] << ": ";
+            cin >> busur[i][j];
         }
     }
-}
 
-int hitungQueue()
-{ // Fungsi menghitung banyak antrian
-    count = head;
-    int hitung_antrean = 0;
-    while (count != NULL)
-    {
-        count = count->next;
-        hitung_antrean++;
+    cout << "\nGraf yang dihasilkan:\n";
+    cout << setw(15) << " ";
+    for (int i = 0; i < jumlahSimpul2311102180; i++) {
+        cout << setw(15) << simpul[i];
     }
-    return hitung_antrean;
-}
-void bersihkanQueue()
-{ // Fungsi menghapus semua antrian
-    temp = head;
-    while (temp != NULL)
-    {
-        del = temp;
-        temp = temp->next;
-        delete del;
-    }
-    head = tail = NULL;
-}
+    cout << endl;
 
-void lihatQueue()
-{ // Fungsi melihat antrian
-    cout << "Data antrian teller:" << endl;
-    temp = head;
-    while (temp != NULL)
-    {
-        cout << temp->data << endl;
-        temp = temp->next;
+    for (int i = 0; i < jumlahSimpul2311102180; i++) {
+        cout << setw(15) << simpul[i];
+        for (int j = 0; j < jumlahSimpul2311102180; j++) {
+            cout << setw(15) << busur[i][j];
+        }
+        cout << endl;
     }
-}
 
-int main()
-{
-    tambahAntrean("Andi");
-    tambahAntrean("Maya");
-    lihatQueue();
-    cout << "Jumlah antrian = " << hitungQueue() << endl;
-    cout << endl;
-    kurangiAntrean();
-    lihatQueue();
-    cout << "Jumlah antrian = " << hitungQueue() << endl;
-    cout << endl;
-    bersihkanQueue();
-    lihatQueue();
-    cout << "Jumlah antrian = " << hitungQueue() << endl;
-    cout << endl;
     return 0;
 }
 ```
 ## [Output Program 1 ]
-![Screenshot (480)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/3bf21006-30ad-44fa-b629-b9c59abca10c)
+![Screenshot (496)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/f76f6a83-ee40-4e3a-a509-ccfb80e52e50)
 
-Program di atas merupakan implementasi antrean (queue) dengan menggunakan konsep linked list tunggal (single linked list). Dengan menggunakan konsep linked list, pengguna dapat memasukkan antrean sebanyak yang diinginkan tanpa harus mengubah ukuran array. Dalam linked list, perlu dideklarasikan struct dan node serta variabel pointer tambahan seperti yang telah disebutkan. Beberapa konsep yang digunakan dalam fungsi queue diubah dengan menggunakan konsep linked list.
-## [Source Code 2]
+rogram ini memungkinkan pengguna untuk memasukkan data tentang graf dengan jumlah simpul yang ditentukan oleh pengguna. Program dimulai dengan meminta pengguna untuk memasukkan jumlah simpul yang akan dimasukkan ke dalam graf. Setelah itu, program meminta pengguna untuk memasukkan nama untuk setiap simpul dan bobot antara setiap pasangan simpul.Setelah semua data dimasukkan, program mencetak graf yang dihasilkan dalam bentuk tabel, di mana baris dan kolom mewakili simpul, dan setiap sel menunjukkan bobot antara simpul-simpul yang sesuai.
+
+
+## [unguided 2]
 ```C++
-//2311102180
 #include <iostream>
-#include <string>
-
 using namespace std;
 
-struct Node
-{
-    string namaMahasiswa;
-    string nim;
-    Node *next;
+// Deklarasi Pohon
+struct Pohon {
+    char data;
+    Pohon *left, *right, *parent; // Pointer
 };
 
-Node *front = nullptr;
-Node *back = nullptr;
+// Pointer global
+Pohon *root2311102180;
 
-bool isFull()
-{
-    return false;
+// Inisialisasi
+void init() {
+    root2311102180 = NULL;
 }
 
-bool isEmpty()
-{
-    return front == nullptr;
+bool isEmpty() {
+    return root2311102180 == NULL;
 }
 
-void enqueueAntrian(string nama, string nim)
-{
-    Node *newNode = new Node;
-    newNode->namaMahasiswa = nama;
-    newNode->nim = nim;
-    newNode->next = nullptr;
+Pohon *newPohon(char data) {
+    Pohon *node = new Pohon();
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+    node->parent = NULL;
+    return node;
+}
 
-    if (isEmpty())
-    {
-        front = newNode;
-        back = newNode;
+void buatNode(char data) {
+    if (isEmpty()) {
+        root2311102180 = newPohon(data);
+        cout << "\nNode " << data << " berhasil dibuat menjadi root." << endl;
+    } else {
+        cout << "\nPohon sudah dibuat" << endl;
     }
+}
+
+Pohon *insertLeft(char data, Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+        return NULL;
+    } else {
+        if (node->left != NULL) {
+            cout << "\nNode " << node->data << " sudah memiliki child kiri!" << endl;
+            return NULL;
+        } else {
+            Pohon *baru = newPohon(data);
+            baru->parent = node;
+            node->left = baru;
+            cout << "\nNode " << data << " berhasil ditambahkan ke child kiri dari " << node->data << endl;
+            return baru;
+        }
+    }
+}
+
+Pohon *insertRight(char data, Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+        return NULL;
+    } else {
+        if (node->right != NULL) {
+            cout << "\nNode " << node->data << " sudah memiliki child kanan!" << endl;
+            return NULL;
+        } else {
+            Pohon *baru = newPohon(data);
+            baru->parent = node;
+            node->right = baru;
+            cout << "\nNode " << data << " berhasil ditambahkan ke child kanan dari " << node->data << endl;
+            return baru;
+        }
+    }
+}
+
+void update(char data, Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    } else {
+        if (!node)
+            cout << "\nNode yang ingin diganti tidak ada!!" << endl;
+        else {
+            char temp = node->data;
+            node->data = data;
+            cout << "\nNode " << temp << " berhasil diubah menjadi " << data << endl;
+        }
+    }
+}
+
+void retrieve(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    } else {
+        if (!node)
+            cout << "\nNode yang ditunjuk tidak ada!" << endl;
+        else {
+            cout << "\nData node : " << node->data << endl;
+        }
+    }
+}
+
+void find(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    } else {
+        if (!node)
+            cout << "\nNode yang ditunjuk tidak ada!" << endl;
+        else {
+            cout << "\nData Node : " << node->data << endl;
+            cout << "Root : " << root2311102180->data << endl;
+
+            if (!node->parent)
+                cout << "Parent : (tidak memiliki parent)" << endl;
+            else
+                cout << "Parent : " << node->parent->data << endl;
+
+            if (node->parent != NULL && node->parent->left != node && node->parent->right == node)
+                cout << "Sibling : " << node->parent->left->data << endl;
+            else if (node->parent != NULL && node->parent->right != node && node->parent->left == node)
+                cout << "Sibling : " << node->parent->right->data << endl;
+            else
+                cout << "Sibling : (tidak memiliki sibling)" << endl;
+
+            if (!node->left)
+                cout << "Child Kiri : (tidak memiliki child kiri)" << endl;
+            else
+                cout << "Child Kiri : " << node->left->data << endl;
+
+            if (!node->right)
+                cout << "Child Kanan : (tidak memiliki child kanan)" << endl;
+            else
+                cout << "Child Kanan : " << node->right->data << endl;
+        }
+    }
+}
+
+// Penelusuran (Traversal)
+// preOrder
+void preOrder(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    else {
+        if (node != NULL) {
+            cout << " " << node->data << ", ";
+            preOrder(node->left);
+            preOrder(node->right);
+        }
+    }
+}
+
+// inOrder
+void inOrder(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    else {
+        if (node != NULL) {
+            inOrder(node->left);
+            cout << " " << node->data << ", ";
+            inOrder(node->right);
+        }
+    }
+}
+
+// postOrder
+void postOrder(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    else {
+        if (node != NULL) {
+            postOrder(node->left);
+            postOrder(node->right);
+            cout << " " << node->data << ", ";
+        }
+    }
+}
+
+// Hapus Node Tree
+void deleteTree(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    else {
+        if (node != NULL) {
+            if (node != root2311102180) {
+                if (node->parent->left == node)
+                    node->parent->left = NULL;
+                else if (node->parent->right == node)
+                    node->parent->right = NULL;
+            }
+            deleteTree(node->left);
+            deleteTree(node->right);
+
+            if (node == root2311102180) {
+                delete root2311102180;
+                root2311102180 = NULL;
+            } else {
+                delete node;
+            }
+        }
+    }
+}
+
+// Hapus SubTree
+void deleteSub(Pohon *node) {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    else {
+        deleteTree(node->left);
+        deleteTree(node->right);
+        cout << "\nNode subtree " << node->data << " berhasil dihapus." << endl;
+    }
+}
+
+// Hapus Tree
+void clear() {
+    if (isEmpty())
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    else {
+            deleteTree(root2311102180);
+    cout << "\nPohon berhasil dihapus." << endl;
+    }
+}
+// Cek Size Tree
+int size(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+        return 0;
+    } else {
+        if (!node) {
+            return 0;
+        } else {
+            return 1 + size(node->left) + size(node->right);
+        }
+    }
+}
+
+// Cek Height Level Tree
+int height(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+        return 0;
+    } else {
+        if (!node) {
+            return 0;
+        } else {
+            int heightKiri = height(node->left);
+            int heightKanan = height(node->right);
+
+            if (heightKiri >= heightKanan) {
+                return heightKiri + 1;
+            } else {
+                return heightKanan + 1;
+            }
+        }
+    }
+}
+
+// Karakteristik Tree
+void characteristic() {
+    int s = size(root2311102180);
+    int h = height(root2311102180);
+    cout << "\nSize Tree : " << s << endl;
+    cout << "Height Tree : " << h << endl;
+    if (h != 0)
+        cout << "Average Node of Tree : " << s / h << endl;
     else
-    {
-        back->next = newNode;
-        back = newNode;
+        cout << "Average Node of Tree : 0" << endl;
+}
+
+// Menampilkan Child dari Sebuah Node
+void displayChild(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    } else {
+        if (!node) {
+            cout << "\nNode yang ditunjuk tidak ada!" << endl;
+        } else {
+            cout << "\nChild dari node " << node->data << " adalah:";
+            if (node->left) {
+                cout << " " << node->left->data;
+            }
+            if (node->right) {
+                cout << " " << node->right->data;
+            }
+            cout << endl;
+        }
     }
 }
 
-void dequeueAntrian()
-{
-    if (isEmpty())
-    {
-        cout << "Queue Kosong" << endl;
-        return;
-    }
-
-    Node *temp = front;
-    front = front->next;
-    delete temp;
-
-    if (front == nullptr)
-    {
-        back = nullptr;
-    }
-}
-
-int countQueue()
-{
-    int count = 0;
-    Node *current = front;
-    while (current != nullptr)
-    {
-        count++;
-        current = current->next;
-    }
-    return count;
-}
-
-void clearQueue()
-{
-    while (front != nullptr)
-    {
-        Node *temp = front;
-        front = front->next;
-        delete temp;
-    }
-    back = nullptr;
-}
-
-void viewQueue()
-{
-    cout << "Data Queue Mahasiswa:" << endl;
-    Node *current = front;
-    while (current != nullptr)
-    {
-        cout << "Nama: " << current->namaMahasiswa << ", NIM: " << current->nim << endl;
-        current = current->next;
+// Menampilkan Descendant dari Sebuah Node
+void displayDescendant(Pohon *node) {
+    if (isEmpty()) {
+        cout << "\nBuat tree terlebih dahulu!" << endl;
+    } else {
+        if (!node) {
+            cout << "\nNode yang ditunjuk tidak ada!" << endl;
+        } else {
+            cout << "\nDescendant dari node " << node->data << " adalah:";
+            // Gunakan rekursi untuk mencetak descendant
+            if (node->left) {
+                cout << " " << node->left->data;
+                displayDescendant(node->left);
+            }
+            if (node->right) {
+                cout << " " << node->right->data;
+                displayDescendant(node->right);
+            }
+            cout << endl;
+        }
     }
 }
 
-int main()
-{
-    enqueueAntrian("Abdul", "123456789");
-    enqueueAntrian("hasyim", "987654321");
-    viewQueue();
-    dequeueAntrian();
-    viewQueue();
+int main() {
+    init();
+    buatNode('A');
 
-    cout << "Jumlah elemen dalam antrean: " << countQueue() << endl;
-    enqueueAntrian("Citra", "1122334455");
-    enqueueAntrian("Dewi", "5544332211");
-    viewQueue();
-    cout << "Jumlah elemen dalam antrean: " << countQueue() << endl;
-    clearQueue();
-    cout << "Antrean setelah clearQueue:" << endl;
-    viewQueue();
+    Pohon *nodeB, *nodeC, *nodeD, *nodeE, *nodeF, *nodeG, *nodeH, *nodeI, *nodeJ;
 
-    return 0;
+    nodeB = insertLeft('B', root2311102180);
+    nodeC = insertRight('C', root2311102180);
+    nodeD = insertLeft('D', nodeB);
+    nodeE = insertRight('E', nodeB);
+    nodeF = insertLeft('F', nodeC);
+    nodeG = insertLeft('G', nodeE);
+    nodeH = insertRight('H', nodeE);
+    nodeI = insertLeft('I', nodeG);
+    nodeJ = insertRight('J', nodeG);
+
+    update('Z', nodeC);
+    update('C', nodeC);
+    retrieve(nodeC);
+    find(nodeC);
+    cout << "\nPreOrder :" << endl;
+    preOrder(root2311102180);
+    cout << "\n" << endl;
+    cout << "InOrder :" << endl;
+    inOrder(root2311102180);
+    cout << "\n" << endl;
+    cout << "PostOrder :" << endl;
+    postOrder(root2311102180);
+    cout << "\n" << endl;
+    characteristic();
+    displayChild(nodeE);
+    displayDescendant(nodeB);
+    deleteSub(nodeE);
+    cout << "\nPreOrder :" << endl;
+    preOrder(root2311102180);
+    cout << "\n" << endl;
+    characteristic();
 }
+
 
 ```
 ## [Output Program 2]
