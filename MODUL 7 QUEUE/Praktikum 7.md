@@ -155,6 +155,8 @@ int main()
 ```
 ## Output Guided 1
 ![Screenshot (479)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/ec8da461-9921-4ba1-8c4d-046849da1718)
+
+Program ini mengimplementasikan antrian (queue) menggunakan array dengan kapasitas maksimal lima elemen. Program ini mencakup beberapa fungsi untuk mengelola antrian, seperti menambah elemen ke antrian (enqueue), menghapus elemen dari antrian (dequeue), mengecek apakah antrian penuh atau kosong, menghitung jumlah elemen dalam antrian, mengosongkan seluruh antrian, dan menampilkan isi antrian.
 # Unguided 
 1. Ubahlah penerapan konsep queue pada bagian guided dari array menjadi
 linked list
