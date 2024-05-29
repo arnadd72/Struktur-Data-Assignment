@@ -11,13 +11,11 @@ int main() {
     string simpul[jumlahSimpul2311102180];
     int busur[jumlahSimpul2311102180][jumlahSimpul2311102180];
 
-    // Input nama simpul
     for (int i = 0; i < jumlahSimpul2311102180; i++) {
         cout << "Simpul " << i + 1 << ": ";
         cin >> simpul[i];
     }
 
-    // Input bobot antar simpul
     for (int i = 0; i < jumlahSimpul2311102180; i++) {
         for (int j = 0; j < jumlahSimpul2311102180; j++) {
             cout << "Silakan masukkan bobot antara simpul " << simpul[i] << " dan " << simpul[j] << ": ";
@@ -25,7 +23,6 @@ int main() {
         }
     }
 
-    // Menampilkan graf
     cout << "\nGraf yang dihasilkan:\n";
     cout << setw(15) << " ";
     for (int i = 0; i < jumlahSimpul2311102180; i++) {
