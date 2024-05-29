@@ -115,7 +115,7 @@ return 0; }
 ## Output Guided 
 ![Screenshot (473)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/24d5f791-69c8-4abe-9526-d04fb8a6db20)
 
-
+Program ini mengimplementasikan sebuah stack menggunakan array untuk menyimpan daftar buku dengan kapasitas maksimum 5 buku. Fungsi isFull dan isEmpty digunakan untuk memeriksa apakah stack sudah penuh atau kosong.Program juga menampilkan buku pada posisi kedua, menghapus buku dari stack, menghitung jumlah buku yang ada, dan mengganti buku pada posisi kedua. Setelah itu, seluruh isi stack dihapus menggunakan "destroyArraybuku", dan stack kembali dicetak untuk memastikan bahwa stack sudah kosong.
 ## Unguided 
    
 ## 1. Buatlah program untuk menentukan apakah kalimat tersebut yang diinputkan dalam program stack adalah palindrom/tidak. Palindrom kalimat yang dibaca dari depan dan belakang sama. Jelaskan bagaimana cara kerja programnya.
