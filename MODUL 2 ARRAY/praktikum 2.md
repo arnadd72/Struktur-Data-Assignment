@@ -1,27 +1,10 @@
 # <h1 align="center">Laporan Praktikum Modul Array</h1>
-<p align="center" style="font-size:16px;">Yesika Widiyani</p>
+<p align="center" style="font-size:16px;">Arnanda setya nosa putra</p>
 <p align="center" style="font-size:16px;">IF-11-E</p>
 
-## Tujuan Praktikum
-```
-1. Mahasiswa dapat memahami konsep Array.
-2. Mahasiswa dapat mengetahui jenis dimensi Array dan cara penulisannya.
-3. Mahasiswa dapat mengimplementasikan Array pada kode program yang dibuat
-```
 ## Dasar Teori
 <p style="text-align: justify; font-size: 12px;"> 
-Array adalah suatu struktur data yang terdiri dari sekumpulan data dengan tipe data yang sama. Setiap data disimpan dalam alamat memori yang berbeda-beda dan disebut dengan elemen array. Kita dapat memasukkan nilai dalam sebuah variable array berdasarkan ukuran dari array tersebut. Dengan Catatan jika kita menentukan ukurannya, sementara bila tidak maka array tersebut bersifat dinamis menyesuaikan jumlah nilai yang di inputkan.
 
-Array terdiri dari beberapa jenis, yaitu array 1 dimensi, array 2 dimensi dan array multidimensi. Dalam mengakses array digunakan nomor index array yang dimulai dari 0.<br>
-
-  **Array 1 Dimensi**
-Array 1 dimensi merupakan suatu kumpulan elemen yang disusun dalam satu baris atau satu kolom. Setiap elemen memiliki indexs unik yang dimulai dari 0 hingga ukuran array dikurangi 1. Array satu dimensi digunakan untuk menyimpan data yang berurutan.<br>
-
-**Array 2 Dimensi**
-Array 2 dimensi merupakan array yang biasa dikenal sebagai matriks memiliki dua indexs, yaitu satu untuk baris, dan satu lainnya untuk kolom. indeks dan kolom tersebut dimulai dari nol hingga ukuran array dikurangi 1. Array 2 dimensi digunakan untuk menyimpan data yang berstruktur secara grid atau tabel.<br>
-
-**Array Multidimensi**
-Array multidimensi adalah array yang memiliki elemen lebih dari dua dimensi, dimana array multidimensi dapat memiliki struktur data tiga dimensi, empat dimensi, dan seterusnya. Setiap dimensi akan memiliki satu set indeks yang sesuai dengan dimensi tersebut. Array multidimensi ini biasa digunakan untuk menyimpan data yang lebih kompleks dan terstruktur dalam bentuk ruang multidimensional.<br>
 </p>
   
 ## Guided
