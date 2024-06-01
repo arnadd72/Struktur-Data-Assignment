@@ -61,9 +61,11 @@ int main()
 ```
 
 #### Output
-![Guided-1](https://github.com/yesikaa/Praktikum-Struktur-Data-Assignment/assets/158696794/2992ceea-868e-48d1-8379-dcd309451f38)
+![Screenshot (510)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/ce6e2fc7-5392-40e5-9d4a-5cdbc326b788)
 
-Program diatas merupakan program yang menginisialisasikan sebuah array tiga dimensi yaitu dengan deklarasi `arr[2][3][3]` masing-masing memiliki tiga baris dan tiga kolom. Program ini akan melakukan tiga kali looping dengan menggunakan tiga variabel for untuk meminta input nilai dari user untuk setiap elemen array. User akan diminta memasukkan nilai array, dan setelah itu program akan melakukan looping kembali mencetak nilai dari setiap elemen array yang telah dimasukkan oleh user. Lalu program mencetak ulang nilai dari elemen array dalam format matriks 2 dimensi dengan looping yang baru.
+![Screenshot (511)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/ae1610cb-ac36-468d-95a1-a675f87a8d78)
+
+Program di atas mendeklarasikan sebuah array 3 dimensi berukuran 2x3x3, kemudian meminta pengguna untuk menginput nilai untuk setiap elemen array tersebut. Setelah semua nilai diinput, program akan mencetak setiap elemen array beserta indeksnya. Akhirnya, program menampilkan semua nilai array dalam bentuk matriks sesuai dimensi yang sudah ditentukan. Program menggunakan tiga loop bersarang untuk mengakses dan memproses elemen-elemen dalam array tersebut.
 <br>
 
 ### 2. Program Mencari Nilai Maksimal pada Array
