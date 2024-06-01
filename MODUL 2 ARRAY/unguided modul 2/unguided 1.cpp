@@ -1,30 +1,43 @@
 #include <iostream>
-
 using namespace std;
 
-int main() {
-    
-    
-    int arr[] = {1, 2, 3, 4, 5 ,6 ,7 ,8 ,9 ,10};
+int main()
+{
+    int array[10];
 
-    cout << "Data array: ";
-    for (int i = 0; i < 10; ++i) {
-        cout << arr[i] << " ";
+    cout << "Masukkan Data Array" << endl;
+    for (int i = 0; i < 10; i++) 
+    {
+        cout << "Array ke-" << (i + 1) << " : ";
+        cin >> array[i];
+    }
+
+    cout << "Data Array: ";
+    for (int i = 0; i < 10; i++)
+    {
+        cout << array[i];
+        if (i < 9) cout << ", ";
     }
     cout << endl;
 
-    cout << "Nomor genap: ";
-    for (int i = 0; i < 10; ++i) {
-        if (arr[i] % 2 == 0) {
-            cout << arr[i] << " ";
+    cout << "Nomor Genap: ";
+    for (int i = 0; i < 10; i++)
+    {
+        if (array[i] % 2 == 0)
+        {
+            cout << array[i];
+            if (i < 9) cout << ", ";
         }
     }
     cout << endl;
 
-    cout << "Nomor ganjil: ";
-    for (int i = 0; i < 10; ++i) {
-        if (arr[i] % 2 != 0) {
-            cout << arr[i] << " ";
+    cout << "Nomor Ganjil: ";
+    for (int i = 0; i < 10; i++)
+    {
+        if (array[i] % 2 != 0)
+        {
+            cout << array[i];
+            if (i < 9) cout << ", ";
         }
     }
     cout << endl;
