@@ -1,10 +1,26 @@
-# <h1 align="center">Laporan Praktikum Modul Array</h1>
+# <h1 align="center">Laporan Praktikum Modul 2 Array</h1>
 <p align="center" style="font-size:16px;">Arnanda setya nosa putra</p>
 <p align="center" style="font-size:16px;">IF-11-E</p>
 
 ## Dasar Teori
 <p style="text-align: justify; font-size: 12px;"> 
+ Array merupakan suatu tipe data yang berisi kumpulan nilai atau tipe data lain, misalnya seperti integer, string, number,  boolean, floating dan lain-lain, selain itu Array juga digunakan untuk menampung banyak nilai dalam satu variabel  Urutan Indek array dimulai dari nol (0) dan bukan dari 1 Sintak Penulisan Array 
+Tipe array namaarray[n]; [1].
 
+1. Array Satu Dimensi 
+Array satu dimensi tidak lain adalah kumpulan elemen-elemen identik yang tersusun dalam satu baris, tetapi isi dari elemen tersebut boleh berbeda.  Dapat disebut juga dengan istilah vektor yang menggambarkan data dalam suatu urutan.
+
+2. Array Dua Dimensi 
+Array dua dimensi yang sering digambarkan sebagai sebuah matriks merupakan perluasan dari sebuah array satu dimensi. Jika array satu dimensi hanya 
+terdiri dari sebuah baris dengan beberapa kolom elemen maka array dua dimensi terdiri dari beberapa baris dan beberapa kolom elemen yang bertipe sama. 
+Pendeklarasian array dua dimensi hampir sama dengan pendeklarasian array satu dimensi, kecuali bahwa array dua dimensi terdapat dua jumlah elemen array yang terdapat di dalam kurung siku dan keduanya boleh tidak sama.
+
+3. Array Tiga Dimensi 
+Array tiga dimensi digunakan untuk mengelola data dalam bentuk 3 dimensi atautiga sisi.
+
+4. Array Banyak Dimensi
+Sebenarnya array banyak dimensi ini tidak terlalu sering dipakai seperti halnyaarray satu dimensi, dua dimensi, dan tiga dimensi. Array banyak dimensi ini pada dasarnya sama dengan array sebelimnya kecuali pada jumlah dimensinya[2].
+  
 </p>
   
 ## Guided
@@ -454,8 +470,8 @@ penggunaan array juga memiliki kelemahan, di mana alokasi memori yang tepat dan 
 <div/>
   
 ## Referensi
-[1] 
-[2]
+[1] Suryana, Taryana. "Array Dalam C++." 2022.
+[2] PRATAMA, Muhammad Aldi. STRUKTUR DATA ARRAY DUA DIMENSI PADA PEMROGRAMAN C++. 2020.
 
 
 
