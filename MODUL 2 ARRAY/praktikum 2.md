@@ -73,42 +73,42 @@ Program di atas mendeklarasikan sebuah array 3 dimensi berukuran 2x3x3, kemudian
 ```C++
 #include <iostream>
 using namespace std;
+
 int main()
 {
-    int maks, i = 1, lokasi;
-    cout << "Masukkan panjang array : ";
+    int maks,a,i = 1,lokasi;
+    cout << "masukan panjang array : ";
     cin >> a;
     int array[a];
-    cout << "Masukkan " << a << " angka:\n";
-    for (int i = 0; i < a; i++)
+    cout << "masukan" << a << "angka\n";
+    for (i= 0; i < a; i++)
     {
-        cout << "Elemen array ke-" << (i + 1) << " : ";
+        cout << "array ke "<< (i) << ": ";
         cin >> array[i];
+
     }
-    maks = array[0];
-    for (int i = 1; i < a; i++)
+    maks = array [0];
+    for (i = 0; i < a;i++);
     {
         if (array[i] > maks)
         {
             maks = array[i];
-            lokasi = i;
+            lokasi= i;
         }
     }
-    cout << "Nilai maksimum adalah " << maks << " dan berada di indeks " << lokasi << endl;
-    return 0;
+    cout<< "nilai maksimum adalah"<< maks << "berada di array ke"<<lokasi<<endl;
 }
 ```
 
 #### Output
-![Guided-2](https://github.com/yesikaa/Praktikum-Struktur-Data-Assignment/assets/158696794/204df8f9-2251-449e-ae11-3d42d350c89a)
+![Screenshot (514)](https://github.com/arnadd72/Struktur-Data-Assignment/assets/149177348/b68a54ac-0b28-4b55-9500-815e31ec61c4)
 
-Program diatas merupakan sebuah program sederhana untuk mencari nilai maksimum dari sebuah array yang diisi oleh pengguna. Pertama, program akan meminta pengguna untuk memasukkan panjang array melalui pesan yang ditampilkan di layar. Setelah itu, program membuat sebuah array dengan ukuran yang sesuai dengan panjang yang dimasukkan pengguna. Kemudian, pengguna diminta untuk memasukkan nilai dari elemen tersebut satu per satu. Setelah semua nilai dimasukkan, program akan melakukan loop untuk membandingkan setiap elemen array dengan variabel maks. Jika elemen array lebih besar dari maks, maka nilai maks diperbarui dengan elemen array tersebut dan lokasi array disimpan di variable lokasi. Setelah selesai, program akan mencetak nilai maksimum beserta lokasi dalam array.
+Program di atas meminta pengguna untuk memasukkan panjang array dan nilai-nilai elemen array tersebut. Setelah semua elemen diinput, program mencari nilai maksimum dalam array beserta lokasinya. Nilai maksimum dan posisi elemen tersebut kemudian ditampilkan kepada pengguna.
 <br>
 
 ## Unguided
 
 ### 1. Buatlah program untuk menampilkan Output seperti berikut dengan data yang diinputkan oleh user!
-![Soal-Unguided-1](https://github.com/yesikaa/Praktikum-Struktur-Data-Assignment/assets/158696794/683732f4-5d32-472f-abea-c74878767beb)
 
 #### Source Code
 ```C++
